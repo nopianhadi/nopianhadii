@@ -1,90 +1,36 @@
 import { useState, useCallback } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import SolutionWorkflow from "@/components/ai/SolutionWorkflow";
-import BusinessProblemsGuide from "@/components/ai/BusinessProblemsGuide";
-import SolutionFAQ from "@/components/ai/SolutionFAQ";
-import EnhancedCTA from "@/components/ai/EnhancedCTA";
-import BeforeAfterComparison from "@/components/ai/BeforeAfterComparison";
-import CaseStudies from "@/components/ai/CaseStudies";
 import { 
-  Sparkles, Brain, Send, CheckCircle2, TrendingUp, Users, 
-  BarChart3, Zap, MessageSquare, ArrowRight, Lightbulb, 
-  Target, DollarSign, ChevronDown, ChevronUp, HelpCircle, 
-  Loader2, Search, BarChart2, PieChart, Clock, AlertCircle, Package2, FileText
+  Sparkles, Send, CheckCircle2, TrendingUp, Users, 
+  BarChart3, Zap, MessageSquare, Lightbulb, 
+  Target, DollarSign, HelpCircle, 
+  Loader2, Search, BarChart2, Package2
 } from "lucide-react";
 
 // Types
-type Complexity = 'Low' | 'Medium' | 'High';
-
 interface Solution {
   type: string;
+  problemAnalysis: string;
+  problemDetails: string;
   title: string;
   description: string;
+  detailedSolution: string;
+  webAppRecommendation: {
+    type: 'website' | 'mobile-app' | 'web-app';
+    name: string;
+    features: string[];
+    techStack: string[];
+  };
   icon: React.ReactNode;
   benefits: string[];
-  estimatedROI: string;
   timeline: string;
-  complexity: Complexity;
 }
 
-// Animation variants
-const containerVariants = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.2,
-    },
-  },
-};
 
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  show: { 
-    opacity: 1, 
-    y: 0, 
-    transition: { 
-      duration: 0.5,
-      ease: [0.16, 1, 0.3, 1]
-    } 
-  },
-};
-
-// Utility functions
-const getComplexityBadge = (complexity: Complexity) => {
-  const styles = {
-    Low: 'bg-green-100 text-green-800',
-    Medium: 'bg-yellow-100 text-yellow-800',
-    High: 'bg-red-100 text-red-800',
-  };
-  
-  return (
-    <span className={`text-xs px-2.5 py-0.5 rounded-full ${styles[complexity]}`}>
-      {complexity} Complexity
-    </span>
-  );
-};
-
-const getTimelineBadge = (timeline: string) => (
-  <div className="flex items-center text-sm text-gray-600">
-    <Clock className="w-4 h-4 mr-1" />
-    <span>{timeline}</span>
-  </div>
-);
-
-const getROIBadge = (roi: string) => (
-  <div className="flex items-center text-sm font-medium text-green-600">
-    <TrendingUp className="w-4 h-4 mr-1" />
-    <span>ROI: {roi}</span>
-  </div>
-);
 
 const AIBusinessSolver = () => {
   // State
@@ -92,10 +38,7 @@ const AIBusinessSolver = () => {
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [solutions, setSolutions] = useState<Solution[]>([]);
   const [showResults, setShowResults] = useState(false);
-  const [expandedWorkflow, setExpandedWorkflow] = useState<string | null>(null);
   const [showProblemsGuide, setShowProblemsGuide] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [activeTab, setActiveTab] = useState<'solutions' | 'workflow' | 'case-studies'>('solutions');
   
   // Example problems for the guide
   const exampleProblems = [
@@ -104,11 +47,6 @@ const AIBusinessSolver = () => {
     "Saya ingin membuat laporan keuangan yang lebih baik dan akurat",
     "Saya ingin mengotomatisasi proses penjualan dan pembelian"
   ];
-
-  // Toggle workflow expansion
-  const toggleWorkflow = useCallback((solutionType: string) => {
-    setExpandedWorkflow(prev => prev === solutionType ? null : solutionType);
-  }, []);
 
   // Handle form submission
   const handleSubmit = (e: React.FormEvent) => {
@@ -127,525 +65,459 @@ const AIBusinessSolver = () => {
     if (!problem.trim()) return;
 
     setIsAnalyzing(true);
-    setIsSubmitting(true);
     setShowResults(false);
-    setActiveTab('solutions');
 
-    // Simulate AI processing with a more realistic delay
+    // Simulate AI processing
     setTimeout(() => {
       const problemLower = problem.toLowerCase();
       const recommendedSolutions: Solution[] = [];
 
-      // Sample solution based on problem keywords
-      if (problemLower.includes('stok') || problemLower.includes('inventory')) {
+      // Detailed keyword-based solution matching
+      if (problemLower.includes('stok') || problemLower.includes('inventory') || problemLower.includes('barang')) {
         recommendedSolutions.push({
           type: "inventory",
-          title: "Sistem Manajemen Inventori Otomatis",
-          description: 'Solusi terintegrasi untuk mengelola stok, pemesanan, dan prediksi kebutuhan inventori',
+          problemAnalysis: "Masalah Manajemen Stok",
+          problemDetails: "Kesulitan dalam mengelola stok barang dapat menyebabkan kerugian besar seperti kehilangan penjualan karena stockout, atau kerugian modal karena overstock. Tanpa sistem yang tepat, bisnis sulit untuk mengetahui kapan harus reorder, berapa jumlah optimal, dan bagaimana mengoptimalkan cash flow.",
+          title: "Sistem Manajemen Inventori Web-Based",
+          description: 'Platform web terintegrasi untuk mengelola seluruh aspek inventory dengan real-time monitoring',
+          detailedSolution: "Kami akan membangun sistem inventory management berbasis web yang dapat diakses dari mana saja. Sistem ini akan mencatat setiap transaksi masuk/keluar barang, memberikan alert otomatis saat stok menipis, dan menyediakan dashboard analytics untuk membantu pengambilan keputusan. Fitur barcode scanning akan mempermudah input data dan mengurangi human error.",
+          webAppRecommendation: {
+            type: 'web-app',
+            name: 'Smart Inventory Management System',
+            features: [
+              'Dashboard real-time dengan grafik stok per kategori',
+              'Sistem alert otomatis via email/WhatsApp saat stok minimum',
+              'Barcode scanner terintegrasi untuk input cepat',
+              'Laporan inventory aging dan turnover analysis',
+              'Multi-location inventory tracking',
+              'Purchase order automation ke supplier'
+            ],
+            techStack: ['React.js', 'Node.js', 'PostgreSQL', 'PWA', 'Barcode API']
+          },
           icon: <Package2 className="w-6 h-6" />,
           benefits: [
-            'Prediksi stok akurat hingga 95%',
-            'Notifikasi stok menipis otomatis',
-            'Integrasi dengan sistem POS dan e-commerce',
-            'Laporan analisis tren penjualan'
+            'Mengurangi stockout hingga 90%',
+            'Optimasi cash flow dengan inventory yang tepat',
+            'Hemat waktu 5+ jam per hari untuk stock checking manual'
           ],
-          estimatedROI: '30-50% dalam 6 bulan',
-          timeline: 'Implementasi 2-4 minggu',
-          complexity: 'Medium'
+          timeline: '3-4 minggu'
         });
       }
 
-      if (problemLower.includes('pelanggan') || problemLower.includes('customer')) {
+      if (problemLower.includes('pelanggan') || problemLower.includes('customer') || problemLower.includes('crm')) {
         recommendedSolutions.push({
           type: "crm",
-          title: "Sistem Manajemen Hubungan Pelanggan (CRM)",
-          description: 'Kelola interaksi dengan pelanggan dan tingkatkan retensi pelanggan',
+          problemAnalysis: "Masalah Manajemen Pelanggan",
+          problemDetails: "Tanpa sistem CRM yang baik, bisnis kehilangan track terhadap interaksi pelanggan, sulit melakukan follow-up yang tepat waktu, dan tidak dapat menganalisis perilaku pelanggan untuk meningkatkan retention. Data pelanggan yang tersebar di berbagai tempat membuat tim sales tidak efektif.",
+          title: "Customer Relationship Management (CRM) System",
+          description: 'Platform CRM komprehensif untuk mengelola seluruh customer journey',
+          detailedSolution: "Kami akan mengembangkan sistem CRM yang mencatat seluruh interaksi dengan pelanggan, mulai dari lead pertama hingga after-sales service. Sistem ini akan memiliki pipeline management untuk tracking deals, automated follow-up reminders, dan customer analytics untuk memahami perilaku pembelian. Integration dengan WhatsApp dan email marketing akan memudahkan komunikasi.",
+          webAppRecommendation: {
+            type: 'web-app',
+            name: 'Comprehensive CRM Platform',
+            features: [
+              'Customer database dengan history lengkap interaksi',
+              'Sales pipeline dengan drag-drop deal management',
+              'Automated email sequences dan follow-up reminders',
+              'WhatsApp integration untuk komunikasi langsung',
+              'Customer segmentation dan behavior analysis',
+              'Sales performance dashboard dan reporting'
+            ],
+            techStack: ['React.js', 'Node.js', 'MongoDB', 'WhatsApp API', 'Email API']
+          },
           icon: <Users className="w-6 h-6" />,
           benefits: [
-            'Database pelanggan terpusat',
-            'Pelacakan interaksi pelanggan',
-            'Analisis perilaku pelanggan',
-            'Otomatisasi pemasaran'
+            'Meningkatkan customer retention hingga 40%',
+            'Mempercepat sales cycle dengan follow-up otomatis',
+            'Insight mendalam tentang customer behavior'
           ],
-          estimatedROI: '40-60% dalam 6 bulan',
-          timeline: 'Implementasi 3-5 minggu',
-          complexity: 'Medium'
+          timeline: '4-6 minggu'
         });
       }
 
-      // Add more solution types based on problem keywords
-      if (recommendedSolutions.length === 0) {
+      if (problemLower.includes('penjualan') || problemLower.includes('sales') || problemLower.includes('omzet')) {
         recommendedSolutions.push({
-          type: "analytics",
-          title: "Dashboard Analitik Bisnis",
-          description: 'Visualisasi data real-time untuk pengambilan keputusan yang lebih baik',
-          icon: <BarChart2 className="w-6 h-6" />,
-          benefits: [
-            'Laporan penjualan real-time',
-            'Analisis tren dan prediksi',
-            'Custom dashboard sesuai kebutuhan',
-            'Akses dari perangkat apapun'
-          ],
-          estimatedROI: '20-40% peningkatan efisiensi',
-          timeline: 'Implementasi 1-2 minggu',
-          complexity: 'Low'
-        });
-      }
-
-      // Data Management Problems
-      if (problemLower.includes('data') || problemLower.includes('laporan') || problemLower.includes('informasi') || problemLower.includes('tracking')) {
-        recommendedSolutions.push({
-          type: "Dashboard Analytics",
-          title: "Business Intelligence Dashboard",
-          description: "Real-time dashboard untuk monitoring data bisnis, analytics, dan reporting otomatis",
-          icon: <BarChart3 className="w-6 h-6" />,
-          benefits: [
-            "Real-time data visualization",
-            "Automated reporting",
-            "Custom KPI tracking",
-            "Multi-source data integration",
-            "Mobile-friendly access"
-          ],
-          estimatedROI: "300-500% dalam 12 bulan",
-          timeline: "6-10 minggu",
-          complexity: "Medium"
-        });
-      }
-
-      // Customer Management Problems
-      if (problemLower.includes('customer') || problemLower.includes('pelanggan') || problemLower.includes('client') || problemLower.includes('klien') || problemLower.includes('crm')) {
-        recommendedSolutions.push({
-          type: "CRM System",
-          title: "Customer Relationship Management",
-          description: "Kelola hubungan pelanggan, track interactions, dan tingkatkan customer satisfaction",
-          icon: <Users className="w-6 h-6" />,
-          benefits: [
-            "Centralized customer database",
-            "Interaction history tracking",
-            "Automated follow-ups",
-            "Sales pipeline management",
-            "Customer analytics"
-          ],
-          estimatedROI: "250-400% dalam 12 bulan",
-          timeline: "8-12 minggu",
-          complexity: "Medium"
-        });
-      }
-
-      // Sales & Revenue Problems
-      if (problemLower.includes('sales') || problemLower.includes('penjualan') || problemLower.includes('revenue') || problemLower.includes('omzet') || problemLower.includes('pendapatan')) {
-        recommendedSolutions.push({
-          type: "Sales Management",
-          title: "Sales Automation Platform",
-          description: "Automate sales process, track leads, dan optimize conversion funnel",
+          type: "sales",
+          problemAnalysis: "Masalah Sistem Penjualan",
+          problemDetails: "Proses penjualan yang masih manual atau tidak terintegrasi menyebabkan inefficiency, kesulitan tracking performa sales, dan hilangnya peluang revenue. Tanpa data yang akurat, sulit untuk membuat forecasting dan strategi penjualan yang tepat.",
+          title: "Sales Management & E-Commerce Platform",
+          description: 'Platform penjualan terintegrasi dengan e-commerce dan sales tracking',
+          detailedSolution: "Kami akan membangun platform penjualan yang mengintegrasikan online store dengan sistem manajemen sales internal. Platform ini akan memiliki fitur katalog produk, shopping cart, payment gateway, dan admin dashboard untuk monitoring penjualan. Sales team dapat tracking leads, deals, dan performance melalui dashboard yang user-friendly.",
+          webAppRecommendation: {
+            type: 'web-app',
+            name: 'Integrated Sales & E-Commerce Platform',
+            features: [
+              'E-commerce website dengan katalog produk lengkap',
+              'Multiple payment gateway (Midtrans, Xendit, dll)',
+              'Sales dashboard dengan real-time analytics',
+              'Lead management dan conversion tracking',
+              'Inventory integration untuk update stok otomatis',
+              'Customer portal untuk order history dan tracking'
+            ],
+            techStack: ['Next.js', 'Stripe/Midtrans', 'PostgreSQL', 'Redis', 'PWA']
+          },
           icon: <TrendingUp className="w-6 h-6" />,
           benefits: [
-            "Lead scoring & prioritization",
-            "Automated email sequences",
-            "Sales performance analytics",
-            "Deal pipeline visualization",
-            "Revenue forecasting"
+            'Meningkatkan penjualan online hingga 200%',
+            'Otomatisasi proses order hingga fulfillment',
+            'Data-driven insights untuk strategi penjualan'
           ],
-          estimatedROI: "400-600% dalam 12 bulan",
-          timeline: "6-8 minggu",
-          complexity: "Medium"
+          timeline: '5-8 minggu'
         });
       }
 
-      // Communication Problems
-      if (problemLower.includes('komunikasi') || problemLower.includes('chat') || problemLower.includes('support') || problemLower.includes('customer service')) {
+      if (problemLower.includes('laporan') || problemLower.includes('data') || problemLower.includes('analisis')) {
         recommendedSolutions.push({
-          type: "Customer Support",
-          title: "AI-Powered Support System",
-          description: "Chatbot AI dan ticketing system untuk handle customer inquiries 24/7",
-          icon: <MessageSquare className="w-6 h-6" />,
+          type: "analytics",
+          problemAnalysis: "Masalah Reporting & Analytics",
+          problemDetails: "Tanpa sistem reporting yang baik, bisnis sulit untuk mengambil keputusan berdasarkan data. Laporan manual memakan waktu lama dan sering tidak akurat. Kurangnya visibility terhadap key metrics membuat bisnis reaktif instead of proaktif dalam menghadapi masalah.",
+          title: "Business Intelligence Dashboard",
+          description: 'Dashboard analytics komprehensif untuk monitoring semua aspek bisnis',
+          detailedSolution: "Kami akan mengembangkan dashboard business intelligence yang mengintegrasikan data dari berbagai sumber (penjualan, inventory, keuangan, marketing) menjadi satu tampilan yang mudah dipahami. Dashboard ini akan memiliki real-time charts, automated reports, dan alert system untuk metrics yang penting. Mobile-responsive design memungkinkan monitoring dari mana saja.",
+          webAppRecommendation: {
+            type: 'web-app',
+            name: 'Business Intelligence Dashboard',
+            features: [
+              'Real-time dashboard dengan key business metrics',
+              'Customizable charts dan visualisasi data',
+              'Automated daily/weekly/monthly reports',
+              'Data integration dari multiple sources',
+              'Mobile-responsive untuk monitoring on-the-go',
+              'Export reports ke PDF/Excel dengan scheduling'
+            ],
+            techStack: ['React.js', 'D3.js/Chart.js', 'Node.js', 'PostgreSQL', 'PWA']
+          },
+          icon: <BarChart3 className="w-6 h-6" />,
           benefits: [
-            "24/7 AI chatbot support",
-            "Ticket management system",
-            "Multi-channel integration",
-            "Response time analytics",
-            "Customer satisfaction tracking"
+            'Pengambilan keputusan 10x lebih cepat dengan data real-time',
+            'Hemat 15+ jam per minggu untuk pembuatan laporan manual',
+            'Early warning system untuk masalah bisnis'
           ],
-          estimatedROI: "200-350% dalam 12 bulan",
-          timeline: "4-6 minggu",
-          complexity: "Low"
+          timeline: '3-5 minggu'
         });
       }
 
-      // Process Automation Problems
-      if (problemLower.includes('manual') || problemLower.includes('otomatis') || problemLower.includes('repetitif') || problemLower.includes('efisien') || problemLower.includes('workflow')) {
-        recommendedSolutions.push({
-          type: "Process Automation",
-          title: "Business Process Automation",
-          description: "Automate repetitive tasks dan streamline workflows untuk efisiensi maksimal",
-          icon: <Zap className="w-6 h-6" />,
-          benefits: [
-            "Workflow automation",
-            "Task scheduling",
-            "Document processing",
-            "Email automation",
-            "Integration dengan existing tools"
-          ],
-          estimatedROI: "500-800% dalam 12 bulan",
-          timeline: "3-5 minggu",
-          complexity: "Low"
-        });
-      }
-
-      // Inventory/Stock Problems
-      if (problemLower.includes('inventory') || problemLower.includes('stock') || problemLower.includes('stok') || problemLower.includes('gudang') || problemLower.includes('barang')) {
-        recommendedSolutions.push({
-          type: "Inventory Management",
-          title: "Sistem Inventory Pintar (Smart Inventory System)",
-          description: "Solusi lengkap untuk mengelola stok barang secara real-time, otomatis reorder saat stock menipis, dan optimasi level inventory supaya tidak overstock atau kehabisan barang. Sistem ini akan integrasikan semua gudang/toko Anda dalam satu dashboard terpusat dengan barcode scanning untuk input cepat dan akurat.",
-          icon: <Target className="w-6 h-6" />,
-          benefits: [
-            "Real-time Stock Tracking - Lihat stock di semua lokasi (gudang, toko, cabang) secara real-time di dashboard. Setiap transaksi (masuk/keluar/transfer) langsung ter-update otomatis",
-            "Automated Reorder Alerts - Sistem akan otomatis kirim alert (email/WhatsApp) saat stock mencapai minimum level. Bahkan bisa auto-generate Purchase Order ke supplier",
-            "Multi-location Management - Kelola inventory di berbagai lokasi sekaligus. Transfer stock antar lokasi, lihat stock per lokasi atau total, semua dari satu dashboard",
-            "Barcode/QR Scanning - Input stock cukup scan barcode pakai HP. Cepat, akurat, dan minimize human error. Label barcode bisa print sendiri dari sistem",
-            "Stock Analytics & Forecasting - Dashboard analytics untuk monitor turnover rate, aging stock, dan forecast demand 1-3 bulan ke depan based on historical data"
-          ],
-          estimatedROI: "300-500% dalam 12 bulan (hemat dari tidak overstock + tidak kehilangan sales karena stockout)",
-          timeline: "6-10 minggu (tergantung jumlah SKU dan kompleksitas integrasi)",
-          complexity: "Medium"
-        });
-      }
-
-      // Financial Problems
-      if (problemLower.includes('keuangan') || problemLower.includes('finance') || problemLower.includes('accounting') || problemLower.includes('invoice') || problemLower.includes('payment')) {
-        recommendedSolutions.push({
-          type: "Financial Management",
-          title: "Accounting & Finance System",
-          description: "Kelola keuangan, invoicing, dan financial reporting dengan mudah",
-          icon: <DollarSign className="w-6 h-6" />,
-          benefits: [
-            "Automated invoicing",
-            "Expense tracking",
-            "Financial reports",
-            "Payment gateway integration",
-            "Tax calculation"
-          ],
-          estimatedROI: "250-400% dalam 12 bulan",
-          timeline: "8-12 minggu",
-          complexity: "High"
-        });
-      }
-
-      // Default: Custom Solution
+      // Default solution if no keywords match
       if (recommendedSolutions.length === 0) {
         recommendedSolutions.push({
-          type: "Custom Solution",
+          type: "custom",
+          problemAnalysis: "Kebutuhan Solusi Custom",
+          problemDetails: "Setiap bisnis memiliki keunikan dan tantangan spesifik yang tidak bisa diselesaikan dengan solusi generic. Dibutuhkan analisis mendalam untuk memahami workflow, pain points, dan requirements yang tepat untuk mengembangkan solusi yang benar-benar efektif.",
           title: "Custom Business Application",
-          description: "Solusi aplikasi custom yang disesuaikan dengan kebutuhan spesifik bisnis Anda",
+          description: 'Aplikasi custom yang dirancang khusus sesuai kebutuhan bisnis Anda',
+          detailedSolution: "Kami akan melakukan business analysis mendalam untuk memahami workflow dan kebutuhan spesifik Anda. Berdasarkan hasil analisis, kami akan merancang dan mengembangkan aplikasi custom yang mengatasi pain points utama bisnis Anda. Aplikasi akan dibangun dengan teknologi modern dan scalable architecture.",
+          webAppRecommendation: {
+            type: 'web-app',
+            name: 'Custom Business Solution',
+            features: [
+              'Disesuaikan 100% dengan business process Anda',
+              'User interface yang intuitif dan mudah digunakan',
+              'Integration dengan sistem existing',
+              'Scalable architecture untuk pertumbuhan bisnis',
+              'Mobile-responsive atau dedicated mobile app',
+              'Comprehensive admin panel dan reporting'
+            ],
+            techStack: ['React.js/Next.js', 'Node.js', 'PostgreSQL/MongoDB', 'Cloud Hosting', 'API Integration']
+          },
           icon: <Lightbulb className="w-6 h-6" />,
           benefits: [
-            "Fully customized to your needs",
-            "Scalable architecture",
-            "Integration ready",
-            "Modern tech stack",
-            "Ongoing support & maintenance"
+            'Solusi yang perfectly fit dengan kebutuhan bisnis',
+            'Competitive advantage dengan sistem unique',
+            'ROI maksimal karena mengatasi masalah spesifik'
           ],
-          estimatedROI: "300-600% dalam 12 bulan",
-          timeline: "8-16 minggu",
-          complexity: "Medium"
+          timeline: '8-12 minggu'
         });
       }
 
-      setSolutions(recommendedSolutions);
+      setSolutions(recommendedSolutions.slice(0, 2)); // Limit to 2 solutions max
       setIsAnalyzing(false);
       setShowResults(true);
-      setIsSubmitting(false);
-      
-      // Scroll to results
-      setTimeout(() => {
-        const resultsElement = document.getElementById('solutions-section');
-        if (resultsElement) {
-          resultsElement.scrollIntoView({ behavior: 'smooth' });
-        }
-      }, 100);
-    }, 2000);
+    }, 1500);
   }, [problem]);
 
   return (
-    <div className="py-12 px-4 md:px-6 max-w-6xl mx-auto">
-      <motion.div 
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-        className="text-center mb-16"
-      >
-        <Badge 
-          variant="outline" 
-          className="mb-4 bg-blue-50 text-blue-600 border-blue-200 px-3 py-1.5 text-sm font-medium"
-        >
-          <Sparkles className="w-4 h-4 mr-2" />
-          AI-Powered Business Solutions
-        </Badge>
-        <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-          Solusi AI untuk Bisnis Anda
-        </h1>
-        <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
-          Jelaskan tantangan bisnis Anda dan dapatkan rekomendasi solusi AI yang disesuaikan untuk meningkatkan efisiensi dan pertumbuhan bisnis Anda.
+    <div className="py-16 px-4 md:px-6 max-w-5xl mx-auto bg-gradient-to-br from-slate-50 via-blue-50/30 to-purple-50/30 rounded-3xl">
+      <div className="text-center mb-12">
+        <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-full text-sm font-medium mb-6 shadow-lg">
+          <Sparkles className="w-4 h-4" />
+          AI Business Consultant
+        </div>
+        <h2 className="text-3xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 bg-clip-text text-transparent">
+          Ceritakan Masalah Bisnis Anda
+        </h2>
+        <p className="text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
+          Dapatkan analisis mendalam dan rekomendasi solusi digital yang tepat untuk mengembangkan bisnis Anda
         </p>
-      </motion.div>
+      </div>
 
       {/* Problem Input Section */}
-      <motion.div 
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.1 }}
-        className="max-w-3xl mx-auto mb-16"
-      >
+      <div className="max-w-3xl mx-auto mb-12">
         <form onSubmit={handleSubmit}>
           <div className="relative group">
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl opacity-75 blur-sm group-hover:opacity-100 transition-all duration-300"></div>
-            <div className="relative">
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 rounded-2xl opacity-20 blur-xl group-hover:opacity-30 transition-opacity"></div>
+            <div className="relative bg-white/80 backdrop-blur-sm rounded-2xl border border-white/50 shadow-xl">
               <Textarea
                 value={problem}
                 onChange={(e) => setProblem(e.target.value)}
                 placeholder="Contoh: Saya kesulitan mengelola stok dan sering kehabisan barang di toko online saya..."
-                className={cn(
-                  "min-h-[160px] text-base pr-32 border-2 border-transparent",
-                  "focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500",
-                  "group-hover:border-blue-400 transition-all duration-300 text-gray-800",
-                  "text-lg placeholder-gray-400"
-                )}
-                disabled={isAnalyzing || isSubmitting}
-                maxLength={1000}
+                className="min-h-[140px] text-base pr-28 resize-none border-0 bg-transparent focus:ring-0 focus:outline-none placeholder:text-gray-400"
+                disabled={isAnalyzing}
+                maxLength={500}
               />
               <Button
                 type="submit"
-                className={cn(
-                  "absolute right-3 bottom-3 transition-all duration-300 shadow-lg",
-                  "bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700",
-                  "transform hover:scale-105 active:scale-95",
-                  !problem.trim() || isAnalyzing || isSubmitting ? "opacity-70 cursor-not-allowed" : ""
-                )}
-                disabled={!problem.trim() || isAnalyzing || isSubmitting}
-                size="lg"
+                className="absolute right-4 bottom-4 bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105"
+                disabled={!problem.trim() || isAnalyzing}
+                size="sm"
               >
-                {isAnalyzing || isSubmitting ? (
+                {isAnalyzing ? (
                   <>
                     <Loader2 className="w-4 h-4 animate-spin mr-2" />
                     Menganalisis...
                   </>
                 ) : (
                   <>
-                    <Search className="w-4 h-4 mr-2" />
-                    Analisis Masalah
+                    <Send className="w-4 h-4 mr-2" />
+                    Analisis AI
                   </>
                 )}
               </Button>
             </div>
           </div>
           
-          <div className="mt-3 flex flex-wrap items-center justify-between gap-2">
+          <div className="mt-4 flex items-center justify-between">
             <button
               type="button"
               onClick={() => setShowProblemsGuide(!showProblemsGuide)}
-              className={cn(
-                "text-blue-600 hover:text-blue-700 transition-colors flex items-center group text-sm",
-                "bg-blue-50 hover:bg-blue-100 px-3 py-1.5 rounded-lg"
-              )}
-              aria-expanded={showProblemsGuide}
-              aria-controls="problems-guide"
+              className="text-blue-600 hover:text-blue-700 text-sm flex items-center bg-blue-50 hover:bg-blue-100 px-3 py-2 rounded-lg transition-colors"
             >
-              <HelpCircle className="w-4 h-4 mr-1.5 transition-transform group-hover:scale-110" />
-              <span className="border-b border-transparent hover:border-blue-600">
-                Contoh Masalah Bisnis Umum
-              </span>
+              <HelpCircle className="w-4 h-4 mr-1" />
+              Lihat contoh masalah
             </button>
             
             <div className={cn(
               "text-sm px-3 py-1 rounded-full",
-              problem.length > 800 ? "bg-amber-50 text-amber-700" : "text-gray-500"
+              problem.length > 400 ? "bg-amber-100 text-amber-700" : "bg-gray-100 text-gray-600"
             )}>
-              {problem.length}/1000 karakter
+              {problem.length}/500 karakter
             </div>
           </div>
         </form>
         
         {/* Example Problems */}
-        <AnimatePresence>
-          {showProblemsGuide && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.3 }}
-              className="mt-4 space-y-2 overflow-hidden"
-              id="problems-guide"
-            >
-              <p className="text-sm text-gray-500 mb-2">Klik untuk menggunakan contoh:</p>
-              <div className="space-y-2">
-                {exampleProblems.map((example, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                    className="cursor-pointer text-left p-3 bg-gray-50 hover:bg-blue-50 rounded-lg border border-gray-100 hover:border-blue-200 transition-colors"
-                    onClick={() => handleExampleClick(example)}
-                  >
-                    <div className="flex items-start">
-                      <Lightbulb className="w-4 h-4 text-yellow-500 mt-0.5 mr-2 flex-shrink-0" />
-                      <span className="text-sm text-gray-700">{example}</span>
+        {showProblemsGuide && (
+          <div className="mt-6 space-y-3">
+            <p className="text-sm text-gray-600 mb-3 font-medium">💡 Klik untuk menggunakan contoh masalah:</p>
+            <div className="grid gap-3">
+              {exampleProblems.map((example, index) => (
+                <div
+                  key={index}
+                  className="cursor-pointer text-left p-4 bg-gradient-to-r from-white to-blue-50/50 hover:from-blue-50 hover:to-purple-50 rounded-xl border border-blue-100 hover:border-blue-300 transition-all duration-200 hover:shadow-md hover:scale-[1.02] group"
+                  onClick={() => handleExampleClick(example)}
+                >
+                  <div className="flex items-start">
+                    <div className="p-1.5 bg-yellow-100 rounded-lg mr-3 group-hover:bg-yellow-200 transition-colors">
+                      <Lightbulb className="w-4 h-4 text-yellow-600" />
                     </div>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </motion.div>
+                    <span className="text-sm text-gray-700 leading-relaxed group-hover:text-gray-800">{example}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
 
       {/* Results Section */}
       {showResults && (
-        <motion.div 
-          id="solutions-section"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="mt-16"
-        >
-          <div className="text-center mb-10">
-            <h2 className="text-3xl font-bold mb-3 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              Solusi yang Direkomendasikan
-            </h2>
+        <div className="mt-16">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-emerald-500 to-teal-500 text-white rounded-full text-sm font-medium mb-4 shadow-lg">
+              <CheckCircle2 className="w-4 h-4" />
+              Analisis Selesai
+            </div>
+            <h3 className="text-3xl font-bold mb-3 bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">
+              Rekomendasi Solusi Digital
+            </h3>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Berdasarkan analisis kami, berikut solusi yang dapat membantu mengatasi tantangan bisnis Anda
+              Berdasarkan analisis AI mendalam terhadap masalah bisnis Anda
             </p>
           </div>
           
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="space-y-12">
             {solutions.map((solution, index) => (
-              <motion.div
-                key={solution.type}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.15 }}
-                className="h-full"
-              >
-                <Card className="h-full overflow-hidden border-2 hover:shadow-xl transition-all duration-300 hover:border-blue-300">
-                  <div className="p-6">
-                    <div className="flex items-start justify-between mb-4">
-                      <div className="p-3 rounded-xl bg-gradient-to-br from-blue-500 to-purple-500 text-white">
+              <div key={solution.type} className="relative">
+                {/* Background decoration */}
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-50 via-purple-50 to-cyan-50 rounded-3xl opacity-50"></div>
+                
+                <Card className="relative p-8 hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] border-0 bg-white/80 backdrop-blur-sm rounded-3xl">
+                  <div className="space-y-8">
+                    {/* Problem Analysis */}
+                    <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-red-500 to-pink-500 p-6 text-white">
+                      <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-16 translate-x-16"></div>
+                      <div className="relative">
+                        <h4 className="text-xl font-bold mb-3 flex items-center">
+                          <div className="p-2 bg-white/20 rounded-lg mr-3">
+                            📋
+                          </div>
+                          {solution.problemAnalysis}
+                        </h4>
+                        <p className="text-red-100 leading-relaxed">
+                          {solution.problemDetails}
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Solution Overview */}
+                    <div className="flex items-start gap-6">
+                      <div className="p-4 rounded-2xl bg-gradient-to-br from-blue-500 to-purple-500 text-white shadow-lg">
                         {solution.icon}
                       </div>
-                      {getComplexityBadge(solution.complexity)}
-                    </div>
-                    
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">{solution.title}</h3>
-                    <p className="text-gray-600 mb-6">{solution.description}</p>
-                    
-                    <div className="space-y-4">
-                      <div>
-                        <h4 className="font-semibold text-gray-800 mb-3 flex items-center">
-                          <Zap className="w-4 h-4 text-yellow-500 mr-2" />
-                          Manfaat Utama
-                        </h4>
-                        <ul className="space-y-3">
-                          {solution.benefits.map((benefit, i) => (
-                            <li key={i} className="flex items-start">
-                              <CheckCircle2 className="w-5 h-5 text-green-500 mr-2.5 mt-0.5 flex-shrink-0" />
-                              <span className="text-gray-700">{benefit}</span>
-                            </li>
-                          ))}
-                        </ul>
+                      <div className="flex-1">
+                        <h4 className="text-2xl font-bold text-gray-900 mb-3">{solution.title}</h4>
+                        <p className="text-gray-600 text-lg leading-relaxed">{solution.description}</p>
                       </div>
-                      
-                      <div className="pt-4 mt-4 border-t border-gray-100 flex flex-wrap items-center justify-between gap-4">
-                        <div className="flex items-center space-x-4">
-                          {getTimelineBadge(solution.timeline)}
-                          {getROIBadge(solution.estimatedROI)}
+                    </div>
+
+                    {/* Detailed Solution */}
+                    <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-blue-500 to-cyan-500 p-6 text-white">
+                      <div className="absolute top-0 right-0 w-24 h-24 bg-white/10 rounded-full -translate-y-12 translate-x-12"></div>
+                      <div className="relative">
+                        <h5 className="text-lg font-bold mb-3 flex items-center">
+                          <div className="p-2 bg-white/20 rounded-lg mr-3">
+                            💡
+                          </div>
+                          Detail Solusi
+                        </h5>
+                        <p className="text-blue-100 leading-relaxed">
+                          {solution.detailedSolution}
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Web/App Recommendation */}
+                    <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-500 p-6 text-white">
+                      <div className="absolute top-0 right-0 w-28 h-28 bg-white/10 rounded-full -translate-y-14 translate-x-14"></div>
+                      <div className="relative">
+                        <h5 className="text-lg font-bold mb-3 flex items-center">
+                          <div className="p-2 bg-white/20 rounded-lg mr-3">
+                            🚀
+                          </div>
+                          Rekomendasi {solution.webAppRecommendation.type === 'website' ? 'Website' : 
+                                     solution.webAppRecommendation.type === 'mobile-app' ? 'Mobile App' : 'Web Application'}
+                        </h5>
+                        <h6 className="text-xl font-semibold mb-4 text-emerald-100">{solution.webAppRecommendation.name}</h6>
+                        
+                        <div className="space-y-4">
+                          <div>
+                            <p className="font-semibold mb-3 text-emerald-100">✨ Fitur Utama:</p>
+                            <div className="grid gap-2">
+                              {solution.webAppRecommendation.features.map((feature, i) => (
+                                <div key={i} className="flex items-start">
+                                  <CheckCircle2 className="w-5 h-5 text-emerald-200 mr-3 mt-0.5 flex-shrink-0" />
+                                  <span className="text-emerald-100">{feature}</span>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                          
+                          <div>
+                            <p className="font-semibold mb-3 text-emerald-100">🛠️ Teknologi yang Digunakan:</p>
+                            <div className="flex flex-wrap gap-2">
+                              {solution.webAppRecommendation.techStack.map((tech, i) => (
+                                <Badge key={i} className="bg-white/20 text-white border-white/30 hover:bg-white/30">
+                                  {tech}
+                                </Badge>
+                              ))}
+                            </div>
+                          </div>
                         </div>
                       </div>
+                    </div>
 
-                      {/* Workflow Toggle and Display */}
-                      <div className="mt-6">
-                        <Button 
-                          className="w-full group" 
-                          size="lg"
-                          variant="outline"
-                          onClick={() => toggleWorkflow(solution.type)}
-                        >
-                          {expandedWorkflow === solution.type ? (
-                            <>
-                              <ChevronUp className="w-4 h-4 mr-2" />
-                              Sembunyikan Alur Kerja
-                            </>
-                          ) : (
-                            <>
-                              <ChevronDown className="w-4 h-4 mr-2" />
-                              Lihat Alur Penyelesaian Masalah
-                            </>
-                          )}
-                        </Button>
-
-                        <AnimatePresence>
-                          {expandedWorkflow === solution.type && (
-                            <motion.div
-                              initial={{ opacity: 0, height: 0 }}
-                              animate={{ opacity: 1, height: 'auto' }}
-                              exit={{ opacity: 0, height: 0 }}
-                              transition={{ duration: 0.3 }}
-                              className="overflow-hidden"
-                            >
-                              <div className="pt-6 mt-4 border-t border-gray-100">
-                                <h4 className="font-semibold text-gray-800 mb-4">Tahapan Implementasi</h4>
-                                <SolutionWorkflow solutionType={solution.type} />
-                              </div>
-                            </motion.div>
-                          )}
-                        </AnimatePresence>
+                    {/* Benefits */}
+                    <div className="bg-gradient-to-r from-yellow-50 to-orange-50 rounded-2xl p-6 border border-yellow-200">
+                      <h5 className="text-lg font-bold text-gray-800 flex items-center mb-4">
+                        <div className="p-2 bg-yellow-200 rounded-lg mr-3">
+                          <TrendingUp className="w-5 h-5 text-yellow-700" />
+                        </div>
+                        Manfaat Bisnis
+                      </h5>
+                      <div className="grid gap-3">
+                        {solution.benefits.map((benefit, i) => (
+                          <div key={i} className="flex items-start bg-white/60 rounded-lg p-3">
+                            <CheckCircle2 className="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
+                            <span className="text-gray-800 font-medium">{benefit}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                    
+                    {/* Timeline */}
+                    <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-2xl p-6 border border-purple-200">
+                      <div className="flex items-center justify-center">
+                        <div className="flex items-center bg-white/80 rounded-full px-6 py-3 shadow-lg">
+                          <div className="p-2 bg-purple-200 rounded-lg mr-3">
+                            ⏱️
+                          </div>
+                          <span className="font-semibold text-gray-700">Estimasi Waktu Pengerjaan:</span>
+                          <span className="ml-3 font-bold text-purple-600 text-lg">{solution.timeline}</span>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </Card>
-              </motion.div>
+              </div>
             ))}
           </div>
 
-        {/* Before/After Comparison - Show visual impact */}
-        {solutions.length > 0 && (
-          <div className="mt-16">
-            <BeforeAfterComparison solutionType={solutions[0].type} />
+          {/* Enhanced CTA */}
+          <div className="relative mt-16">
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 rounded-3xl opacity-20 blur-xl"></div>
+            <div className="relative bg-white/90 backdrop-blur-sm rounded-3xl p-8 border border-white/50 shadow-2xl text-center">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-green-500 to-emerald-500 text-white rounded-full text-sm font-medium mb-4 shadow-lg">
+                <CheckCircle2 className="w-4 h-4" />
+                Siap Implementasi
+              </div>
+              <h4 className="text-2xl font-bold text-gray-900 mb-3">
+                Tertarik dengan Solusi Ini?
+              </h4>
+              <p className="text-lg text-gray-600 mb-6 max-w-2xl mx-auto">
+                Mari diskusikan lebih detail tentang kebutuhan bisnis Anda dan bagaimana kami dapat membantu mewujudkan solusi digital yang tepat
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button asChild size="lg" className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105">
+                  <a href="/contact" className="flex items-center gap-2">
+                    <MessageSquare className="w-5 h-5" />
+                    Konsultasi Gratis
+                  </a>
+                </Button>
+                <Button asChild variant="outline" size="lg" className="border-2 border-gray-300 hover:border-blue-400 hover:bg-blue-50 transition-all duration-200">
+                  <a href="/gallery" className="flex items-center gap-2">
+                    <Search className="w-5 h-5" />
+                    Lihat Portfolio
+                  </a>
+                </Button>
+              </div>
+            </div>
           </div>
-        )}
 
-        {/* Case Studies - Social proof */}
-        {solutions.length > 0 && (
-          <div className="mt-16">
-            <CaseStudies solutionType={solutions[0].type} />
+          {/* Try Again */}
+          <div className="text-center mt-8">
+            <Button
+              variant="ghost"
+              onClick={() => {
+                setShowResults(false);
+                setProblem("");
+                setSolutions([]);
+              }}
+              className="text-gray-600 hover:text-gray-800 hover:bg-gray-100 px-6 py-3 rounded-full transition-all duration-200"
+            >
+              🔄 Analisis Masalah Lain
+            </Button>
           </div>
-        )}
-
-        {/* Enhanced CTA - Better than old Final CTA */}
-        <div className="mt-16">
-          <EnhancedCTA />
         </div>
-
-        {/* FAQ Section */}
-        <div className="mt-16">
-          <SolutionFAQ />
-        </div>
-
-        {/* Try Again */}
-        <div className="text-center mt-16">
-          <Button
-            variant="outline"
-            onClick={() => {
-              setShowResults(false);
-              setProblem("");
-              setSolutions([]);
-            }}
-          >
-            Coba Masalah Lain
-          </Button>
-        </div>
-      </motion.div>
-    )}
+      )}
     </div>
   );
 };

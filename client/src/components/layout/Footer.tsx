@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 
 export default function Footer() {
   const quickLinks = [
-    { label: "Produk", href: "/#product" },
+    { label: "Layanan", href: "/#product" },
     { label: "Tim", href: "/#team" },
     { label: "Testimoni", href: "/#testimonials" },
     { label: "Harga", href: "/#pricing" },
@@ -25,7 +25,7 @@ export default function Footer() {
               </span>
             </div>
             <p className="google-body text-sm">
-              Membangun dashboard dan aplikasi AI yang mengubah cara bisnis bekerja.
+              Digital agency yang mengkhususkan diri dalam web development dan app development untuk mengembangkan bisnis Anda.
             </p>
           </div>
 
@@ -117,7 +117,7 @@ export default function Footer() {
 
         <div className="mt-12 pt-8 border-t border-blue-200/30 text-center animate-fade-in">
           <p className="text-mobile-sm text-muted-foreground">
-            © 2025 Hadi Origin. Ingin dashboard untuk bisnismu? Yuk, mulai dari konsultasi gratis.
+            © 2025 Hadi Origin. Ingin website atau aplikasi mobile untuk bisnismu? Yuk, mulai dari konsultasi gratis.
           </p>
         </div>
       </div>

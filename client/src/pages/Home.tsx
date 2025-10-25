@@ -1,7 +1,6 @@
 // import { Helmet } from "react-helmet-async";
 import Navigation from "@/components/layout/Navigation";
 import Hero from "@/components/layout/Hero";
-import AIFeatureShowcase from "@/components/ai/AIFeatureShowcase";
 import AIBusinessSolver from "@/components/ai/AIBusinessSolver";
 import AIChatbot from "@/components/ai/AIChatbot";
 import VideoShowcase from "@/components/showcase/VideoShowcase";
@@ -9,7 +8,7 @@ import HowItWorks from "@/components/HowItWorks";
 import Statistics from "@/components/Statistics";
 import Partners from "@/components/Partners";
 import Features from "@/components/Features";
-import ProjectsShowcase from "@/components/showcase/ProjectsShowcase";
+import HomePortfolio from "@/components/HomePortfolio";
 import Pricing from "@/components/Pricing";
 import Team from "@/components/Team";
 import Testimonials from "@/components/Testimonials";
@@ -17,6 +16,7 @@ import Industries from "@/components/Industries";
 import Footer from "@/components/layout/Footer";
 import BackToTop from "@/components/BackToTop";
 import ProgressIndicator from "@/components/ProgressIndicator";
+import FloatingCTA from "@/components/FloatingCTA";
 
 export default function Home() {
   return (
@@ -48,16 +48,14 @@ export default function Home() {
       <Navigation />
       <main id="main-content">
         <Hero />
-        {/* ✨ NEW: AI Feature Showcase - Interactive Demo */}
-        <AIFeatureShowcase />
-        {/* ✨ NEW: AI Business Problem Solver - Client Input */}
+        {/* ✨ AI Business Problem Solver - Client Input */}
         <AIBusinessSolver />
+        <HomePortfolio />
+        <Partners />
+        <Features />
         <VideoShowcase />
         <HowItWorks />
         <Statistics />
-        <Partners />
-        <Features />
-        <ProjectsShowcase />
         <Team />
         <Testimonials />
         <Pricing />
@@ -65,7 +63,8 @@ export default function Home() {
       </main>
       <Footer />
       <BackToTop />
-      {/* ✨ NEW: AI Chatbot Assistant - Floating */}
+      <FloatingCTA />
+      {/* ✨ AI Chatbot Assistant - Floating */}
       <AIChatbot />
     </div>
   );

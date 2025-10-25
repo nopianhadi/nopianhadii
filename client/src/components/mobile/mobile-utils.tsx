@@ -1,14 +1,15 @@
 import * as React from "react"
 import { cn } from "@/lib/utils"
 
-// Mobile-optimized container dengan spacing yang lebih rapi
+// Mobile-optimized container dengan spacing yang lebih rapi - 2025 Edition
 interface MobileContainerOptimizedProps extends React.HTMLAttributes<HTMLDivElement> {
   size?: "sm" | "md" | "lg" | "xl" | "full"
   padding?: "compact" | "comfortable" | "spacious"
+  safeArea?: boolean
 }
 
 export const MobileContainerOptimized = React.forwardRef<HTMLDivElement, MobileContainerOptimizedProps>(
-  ({ className, size = "lg", padding = "comfortable", ...props }, ref) => {
+  ({ className, size = "lg", padding = "comfortable", safeArea = false, ...props }, ref) => {
     const sizeClasses = {
       sm: "max-w-sm",
       md: "max-w-md", 
@@ -30,6 +31,7 @@ export const MobileContainerOptimized = React.forwardRef<HTMLDivElement, MobileC
           "mx-auto w-full",
           sizeClasses[size],
           paddingClasses[padding],
+          safeArea && "safe-area-all",
           className
         )}
         {...props}
@@ -39,15 +41,16 @@ export const MobileContainerOptimized = React.forwardRef<HTMLDivElement, MobileC
 )
 MobileContainerOptimized.displayName = "MobileContainerOptimized"
 
-// Mobile-optimized grid dengan spacing yang lebih konsisten
+// Mobile-optimized grid dengan spacing yang lebih konsisten - 2025 Edition
 interface MobileGridOptimizedProps extends React.HTMLAttributes<HTMLDivElement> {
-  cols?: 1 | 2 | 3 | 4
+  cols?: 1 | 2 | 3 | 4 | "auto"
   gap?: "compact" | "comfortable" | "spacious"
   responsive?: boolean
+  minItemWidth?: string
 }
 
 export const MobileGridOptimized = React.forwardRef<HTMLDivElement, MobileGridOptimizedProps>(
-  ({ className, cols = 1, gap = "comfortable", responsive = true, ...props }, ref) => {
+  ({ className, cols = 1, gap = "comfortable", responsive = true, minItemWidth = "280px", ...props }, ref) => {
     const gapClasses = {
       compact: "gap-2 sm:gap-3 md:gap-4",
       comfortable: "gap-3 sm:gap-4 md:gap-6",
@@ -55,6 +58,10 @@ export const MobileGridOptimized = React.forwardRef<HTMLDivElement, MobileGridOp
     }
     
     const getColsClass = () => {
+      if (cols === "auto") {
+        return ""
+      }
+      
       if (!responsive) return `grid-cols-${cols}`
       
       switch (cols) {
@@ -66,6 +73,10 @@ export const MobileGridOptimized = React.forwardRef<HTMLDivElement, MobileGridOp
       }
     }
     
+    const gridStyle = cols === "auto" ? {
+      gridTemplateColumns: `repeat(auto-fit, minmax(${minItemWidth}, 1fr))`
+    } : {}
+    
     return (
       <div
         ref={ref}
@@ -75,6 +86,7 @@ export const MobileGridOptimized = React.forwardRef<HTMLDivElement, MobileGridOp
           gapClasses[gap],
           className
         )}
+        style={gridStyle}
         {...props}
       />
     )
@@ -82,15 +94,16 @@ export const MobileGridOptimized = React.forwardRef<HTMLDivElement, MobileGridOp
 )
 MobileGridOptimized.displayName = "MobileGridOptimized"
 
-// Mobile-optimized icon wrapper dengan sizing yang konsisten
+// Mobile-optimized icon wrapper dengan sizing yang konsisten - 2025 Edition
 interface MobileIconProps extends React.HTMLAttributes<HTMLDivElement> {
   size?: "xs" | "sm" | "md" | "lg" | "xl"
-  variant?: "default" | "contained" | "outlined"
-  color?: "default" | "primary" | "secondary" | "muted"
+  variant?: "default" | "contained" | "outlined" | "glass"
+  color?: "default" | "primary" | "secondary" | "muted" | "accent"
+  interactive?: boolean
 }
 
 export const MobileIcon = React.forwardRef<HTMLDivElement, MobileIconProps>(
-  ({ className, size = "md", variant = "default", color = "default", children, ...props }, ref) => {
+  ({ className, size = "md", variant = "default", color = "default", interactive = false, children, ...props }, ref) => {
     const sizeClasses = {
       xs: "w-3 h-3 sm:w-4 sm:h-4",
       sm: "w-4 h-4 sm:w-5 sm:h-5",
@@ -101,15 +114,17 @@ export const MobileIcon = React.forwardRef<HTMLDivElement, MobileIconProps>(
     
     const variantClasses = {
       default: "",
-      contained: "p-1.5 sm:p-2 rounded-lg bg-primary/10",
-      outlined: "p-1.5 sm:p-2 rounded-lg border border-border"
+      contained: "p-1.5 sm:p-2 rounded-xl bg-primary/10 hover:bg-primary/20 transition-colors",
+      outlined: "p-1.5 sm:p-2 rounded-xl border border-border hover:border-primary/50 transition-colors",
+      glass: "p-1.5 sm:p-2 rounded-xl glass-2025"
     }
     
     const colorClasses = {
       default: "text-foreground",
       primary: "text-primary",
       secondary: "text-secondary-foreground",
-      muted: "text-muted-foreground"
+      muted: "text-muted-foreground",
+      accent: "text-accent-foreground"
     }
     
     return (
@@ -120,6 +135,7 @@ export const MobileIcon = React.forwardRef<HTMLDivElement, MobileIconProps>(
           sizeClasses[size],
           variantClasses[variant],
           colorClasses[color],
+          interactive && "touch-target hover-lift tap-scale cursor-pointer",
           className
         )}
         {...props}

@@ -18,7 +18,7 @@ export default function Industries() {
             Industri yang Dilayani
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Setiap industri punya kebutuhan unik — saya bantu membuat solusi digital yang disesuaikan dan cerdas
+            Setiap industri punya kebutuhan unik — kami bantu membuat website dan aplikasi mobile yang disesuaikan dengan bisnis Anda
           </p>
         </div>
 

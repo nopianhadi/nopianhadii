@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
-import { Mail, Phone, MapPin, Send, MessageSquare, Clock } from "lucide-react";
+import { Mail, Phone, MapPin, Send, MessageSquare, MessageCircle, Clock, ArrowRight } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 export default function Contact() {
@@ -47,113 +47,146 @@ export default function Contact() {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="relative min-h-[50vh] flex items-center overflow-hidden bg-gradient-to-br from-blue-50 via-white to-cyan-50 section-mobile">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(59,130,246,0.15),transparent_50%),radial-gradient(circle_at_70%_80%,rgba(6,182,212,0.15),transparent_50%)] animate-fade-in" />
+      <section className="section-spacing-lg bg-gradient-to-br from-white via-blue-50/30 to-purple-50/20 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-blue-400/10 to-blue-600/10 rounded-full blur-3xl translate-x-48 -translate-y-48"></div>
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-br from-cyan-400/10 to-blue-500/10 rounded-full blur-3xl -translate-x-48 translate-y-48"></div>
         
-        <div className="max-w-7xl mx-auto container-mobile relative z-10">
-          <div className="max-w-3xl animate-slide-up">
-            <Badge className="inline-flex items-center gap-2 bg-blue-100/80 text-blue-700 border-blue-200/50 glass hover:bg-blue-200/80 transition-all duration-300 mb-6">
-              <MessageSquare className="w-3.5 h-3.5" />
+        <div className="container-responsive relative z-10">
+          <div className="max-w-5xl mx-auto text-center google-fade-in">
+            <div className="inline-flex items-center gap-2 sm:gap-3 px-4 py-2 sm:px-6 sm:py-3 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-full text-sm sm:text-base font-medium mb-6 sm:mb-8 shadow-lg">
+              <MessageSquare className="w-4 h-4 sm:w-5 sm:h-5" />
               Hubungi Kami
-            </Badge>
+            </div>
             
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight mb-6">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold bg-gradient-to-r from-blue-600 via-blue-700 to-cyan-600 bg-clip-text text-transparent mb-6 sm:mb-8 leading-tight tracking-tight">
               Mari Diskusikan{" "}
-              <span className="gradient-text-primary">Proyek Anda</span>
+              <span className="bg-gradient-to-r from-cyan-500 to-blue-500 bg-clip-text text-transparent">Proyek Anda</span>
             </h1>
             
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Kami siap membantu mewujudkan ide Anda menjadi solusi teknologi yang nyata. 
-              Hubungi kami untuk konsultasi gratis!
+            <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed mb-8 sm:mb-12">
+              Wujudkan ide Anda menjadi website & aplikasi mobile yang luar biasa. Konsultasi gratis untuk proyek Anda!
             </p>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a 
+                href="https://wa.me/62895406181407?text=Halo%20Hadi%20Origin%2C%20saya%20ingin%20berkonsultasi%20tentang%20project%20saya" 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="portfolio-button primary inline-flex items-center justify-center gap-3 px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700"
+              >
+                <MessageCircle className="w-5 h-5" />
+                <span>WhatsApp</span>
+                <ArrowRight className="w-5 h-5" />
+              </a>
+              <a 
+                href="#contact-form" 
+                className="portfolio-button secondary inline-flex items-center justify-center gap-3 px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg"
+              >
+                <span>Kirim Pesan</span>
+                <ArrowRight className="w-5 h-5" />
+              </a>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Contact Section */}
-      <section className="section-mobile bg-white">
-        <div className="max-w-7xl mx-auto container-mobile">
-          <div className="grid lg:grid-cols-3 gap-8 md:gap-12">
+      <section id="contact-form" className="section-spacing-lg bg-gradient-to-br from-slate-50 via-blue-50/30 to-purple-50/30 relative overflow-hidden">
+        {/* Background decorations */}
+        <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-blue-400/20 to-blue-600/20 rounded-full blur-3xl translate-x-48 -translate-y-48"></div>
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-br from-cyan-400/20 to-blue-500/20 rounded-full blur-3xl -translate-x-48 translate-y-48"></div>
+        
+        <div className="container-responsive relative">
+          <div className="grid lg:grid-cols-3 gap-8 lg:gap-12">
             {/* Contact Info */}
             <div className="lg:col-span-1 space-y-6">
-              <div className="animate-slide-up">
-                <h2 className="text-2xl font-bold gradient-text-accent mb-6">
+              <div className="google-fade-in">
+                <h2 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-blue-600 via-blue-700 to-cyan-600 bg-clip-text text-transparent mb-6 sm:mb-8">
                   Informasi Kontak
                 </h2>
                 
-                <div className="space-y-4">
-                  <Card className="glass-card p-4">
-                    <div className="flex items-start gap-3">
-                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-purple-500/20 to-blue-500/20 border border-purple-200/30 flex items-center justify-center flex-shrink-0">
-                        <Mail className="w-5 h-5 text-primary" />
-                      </div>
-                      <div>
-                        <h3 className="font-semibold text-foreground mb-1">Email</h3>
-                        <a href="mailto:hadi.dev@domain.com" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                          hadi.dev@domain.com
-                        </a>
+                <div className="space-y-4 sm:space-y-6">
+                  {[
+                    {
+                      icon: <MessageCircle className="w-5 h-5 sm:w-6 sm:h-6 text-white" />,
+                      title: "WhatsApp",
+                      content: "+62 895-4061-81407",
+                      description: "Respon cepat dalam 1 jam",
+                      href: "https://wa.me/62895406181407?text=Halo%20Hadi%20Origin%2C%20saya%20ingin%20berkonsultasi%20tentang%20project%20saya",
+                      gradient: "from-green-500 to-green-600",
+                      primary: true
+                    },
+                    {
+                      icon: <Mail className="w-5 h-5 sm:w-6 sm:h-6 text-white" />,
+                      title: "Email",
+                      content: "nopianhadi2@gmail.com",
+                      description: "Respon dalam 24 jam",
+                      href: "mailto:nopianhadi2@gmail.com",
+                      gradient: "from-blue-500 to-blue-600"
+                    },
+                    {
+                      icon: <Phone className="w-5 h-5 sm:w-6 sm:h-6 text-white" />,
+                      title: "Telepon",
+                      content: "+62 895-4061-81407",
+                      description: "Senin - Jumat: 09:00 - 18:00",
+                      href: "tel:+62895406181407",
+                      gradient: "from-blue-600 to-cyan-500"
+                    },
+                    {
+                      icon: <MapPin className="w-5 h-5 sm:w-6 sm:h-6 text-white" />,
+                      title: "Lokasi",
+                      content: "Jakarta, Indonesia",
+                      description: "Meeting by appointment",
+                      href: null,
+                      gradient: "from-cyan-500 to-blue-500"
+                    }
+                  ].map((contact, index) => (
+                    <div key={index} className="portfolio-card">
+                      <div className="flex items-start gap-3 sm:gap-4">
+                        <div className={`p-2 sm:p-3 bg-gradient-to-br ${contact.gradient} rounded-xl shadow-lg flex-shrink-0`}>
+                          {contact.icon}
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-center gap-2 mb-1 sm:mb-2">
+                            <h3 className="text-base sm:text-lg font-bold text-foreground">{contact.title}</h3>
+                            {contact.primary && (
+                              <Badge className="bg-green-100 text-green-700 text-xs">Recommended</Badge>
+                            )}
+                          </div>
+                          {contact.href ? (
+                            <a 
+                              href={contact.href} 
+                              target={contact.href.startsWith('http') ? '_blank' : undefined} 
+                              rel={contact.href.startsWith('http') ? 'noopener noreferrer' : undefined} 
+                              className="text-sm sm:text-base font-medium text-foreground hover:text-primary transition-colors leading-relaxed block mb-1 break-all"
+                            >
+                              {contact.content}
+                            </a>
+                          ) : (
+                            <p className="text-sm sm:text-base font-medium text-foreground leading-relaxed mb-1">
+                              {contact.content}
+                            </p>
+                          )}
+                          <p className="text-xs sm:text-sm text-muted-foreground">{contact.description}</p>
+                        </div>
                       </div>
                     </div>
-                  </Card>
-
-                  <Card className="glass-card p-4">
-                    <div className="flex items-start gap-3">
-                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500/20 to-cyan-500/20 border border-blue-200/30 flex items-center justify-center flex-shrink-0">
-                        <Phone className="w-5 h-5 text-accent" />
-                      </div>
-                      <div>
-                        <h3 className="font-semibold text-foreground mb-1">Telepon</h3>
-                        <a href="tel:+6281234567890" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                          +62 812-3456-7890
-                        </a>
-                      </div>
-                    </div>
-                  </Card>
-
-                  <Card className="glass-card p-4">
-                    <div className="flex items-start gap-3">
-                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-green-500/20 to-emerald-500/20 border border-green-200/30 flex items-center justify-center flex-shrink-0">
-                        <MapPin className="w-5 h-5 text-green-600" />
-                      </div>
-                      <div>
-                        <h3 className="font-semibold text-foreground mb-1">Lokasi</h3>
-                        <p className="text-sm text-muted-foreground">
-                          Jakarta, Indonesia
-                        </p>
-                      </div>
-                    </div>
-                  </Card>
-
-                  <Card className="glass-card p-4">
-                    <div className="flex items-start gap-3">
-                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-orange-500/20 to-yellow-500/20 border border-orange-200/30 flex items-center justify-center flex-shrink-0">
-                        <Clock className="w-5 h-5 text-orange-600" />
-                      </div>
-                      <div>
-                        <h3 className="font-semibold text-foreground mb-1">Jam Kerja</h3>
-                        <p className="text-sm text-muted-foreground">
-                          Senin - Jumat: 09:00 - 18:00
-                          <br />
-                          Sabtu: 09:00 - 14:00
-                        </p>
-                      </div>
-                    </div>
-                  </Card>
+                  ))}
                 </div>
               </div>
             </div>
 
             {/* Contact Form */}
             <div className="lg:col-span-2">
-              <Card className="glass-card-mobile p-6 md:p-8 animate-slide-up" style={{ animationDelay: "0.1s" }}>
-                <h2 className="text-2xl font-bold gradient-text-accent mb-6">
+              <div className="portfolio-card google-fade-in" style={{ animationDelay: "0.1s" }}>
+                <h2 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-cyan-500 via-blue-600 to-blue-700 bg-clip-text text-transparent mb-6 sm:mb-8">
                   Kirim Pesan
                 </h2>
-                
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                      <Label htmlFor="name">Nama Lengkap *</Label>
+              
+                <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-8">
+                  <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
+                    <div className="space-y-2 sm:space-y-3">
+                      <Label htmlFor="name" className="text-sm sm:text-base font-semibold text-foreground">Nama Lengkap *</Label>
                       <Input
                         id="name"
                         name="name"
@@ -161,12 +194,12 @@ export default function Contact() {
                         onChange={handleChange}
                         placeholder="John Doe"
                         required
-                        className="glass"
+                        className="h-10 sm:h-12 text-sm sm:text-base"
                       />
                     </div>
                     
-                    <div className="space-y-2">
-                      <Label htmlFor="email">Email *</Label>
+                    <div className="space-y-2 sm:space-y-3">
+                      <Label htmlFor="email" className="text-sm sm:text-base font-semibold text-foreground">Email *</Label>
                       <Input
                         id="email"
                         name="email"
@@ -175,56 +208,56 @@ export default function Contact() {
                         onChange={handleChange}
                         placeholder="john@example.com"
                         required
-                        className="glass"
+                        className="h-10 sm:h-12 text-sm sm:text-base"
                       />
                     </div>
                   </div>
 
-                  <div className="space-y-2">
-                    <Label htmlFor="subject">Subjek *</Label>
+                  <div className="space-y-2 sm:space-y-3">
+                    <Label htmlFor="subject" className="text-sm sm:text-base font-semibold text-foreground">Subjek *</Label>
                     <Input
                       id="subject"
                       name="subject"
                       value={formData.subject}
                       onChange={handleChange}
-                      placeholder="Konsultasi Proyek AI"
+                      placeholder="Konsultasi Website/Aplikasi Mobile"
                       required
-                      className="glass"
+                      className="h-10 sm:h-12 text-sm sm:text-base"
                     />
                   </div>
 
-                  <div className="space-y-2">
-                    <Label htmlFor="message">Pesan *</Label>
+                  <div className="space-y-2 sm:space-y-3">
+                    <Label htmlFor="message" className="text-sm sm:text-base font-semibold text-foreground">Pesan *</Label>
                     <Textarea
                       id="message"
                       name="message"
                       value={formData.message}
                       onChange={handleChange}
-                      placeholder="Ceritakan tentang proyek atau kebutuhan Anda..."
+                      placeholder="Ceritakan tentang website atau aplikasi mobile yang ingin Anda buat. Sertakan fitur-fitur yang diinginkan, target audience, dan timeline proyek..."
                       required
-                      rows={6}
-                      className="glass resize-none"
+                      rows={5}
+                      className="text-sm sm:text-base resize-none"
                     />
                   </div>
 
                   <Button
                     type="submit"
                     size="lg"
-                    variant="gradient"
                     disabled={isSubmitting}
-                    className="w-full md:w-auto gap-2"
+                    className="w-full sm:w-auto portfolio-button primary"
                   >
                     {isSubmitting ? (
                       <>Mengirim...</>
                     ) : (
                       <>
-                        <Send className="w-4 h-4" />
-                        Kirim Pesan
+                        <Send className="w-4 h-4 sm:w-5 sm:h-5" />
+                        <span>Kirim Pesan</span>
+                        <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
                       </>
                     )}
                   </Button>
                 </form>
-              </Card>
+              </div>
             </div>
           </div>
         </div>
@@ -232,39 +265,50 @@ export default function Contact() {
 
       {/* Meeting Booking Section */}
       {import.meta.env.VITE_GOOGLE_APPOINTMENTS_URL && (
-        <section className="section-mobile bg-gradient-to-br from-slate-50 to-blue-50/30">
-          <div className="max-w-7xl mx-auto container-mobile">
+        <section className="py-20 lg:py-32 bg-gradient-to-br from-slate-50 via-blue-50/30 to-purple-50/30 relative overflow-hidden">
+          {/* Background decorations */}
+          <div className="absolute top-0 left-0 w-96 h-96 bg-gradient-to-br from-blue-400/20 to-blue-600/20 rounded-full blur-3xl -translate-x-48 -translate-y-48"></div>
+          <div className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-br from-cyan-400/20 to-blue-500/20 rounded-full blur-3xl translate-x-48 translate-y-48"></div>
+          
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
             <div className="grid lg:grid-cols-3 gap-8 md:gap-12 items-start">
-              <div className="lg:col-span-1 space-y-4 animate-slide-up">
-                <h2 className="text-2xl font-bold gradient-text-accent">Jadwalkan Meeting</h2>
-                <p className="text-muted-foreground">
+              <div className="lg:col-span-1 space-y-6 animate-slide-up">
+                <h2 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-blue-600 via-blue-700 to-cyan-600 bg-clip-text text-transparent">Jadwalkan Meeting</h2>
+                <p className="text-xl text-gray-700 leading-relaxed">
                   Pilih waktu yang cocok untuk Anda melalui Google Calendar Appointment.
                 </p>
                 <div>
-                  <Button asChild variant="outline" className="glass">
+                  <Button asChild className="bg-gradient-to-r from-blue-500 to-blue-600 text-white hover:from-blue-600 hover:to-blue-700 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 rounded-xl px-6 py-3">
                     <a
                       href={import.meta.env.VITE_GOOGLE_APPOINTMENTS_URL}
                       target="_blank"
                       rel="noreferrer"
+                      className="inline-flex items-center gap-2"
                     >
-                      Buka di Tab Baru
+                      <span>Buka di Tab Baru</span>
+                      <ArrowRight className="w-4 h-4" />
                     </a>
                   </Button>
                 </div>
               </div>
               <div className="lg:col-span-2 animate-slide-up" style={{ animationDelay: "0.05s" }}>
-                <Card className="glass-card overflow-hidden">
-                  <div className="aspect-[4/3] sm:aspect-video">
-                    <iframe
-                      src={import.meta.env.VITE_GOOGLE_APPOINTMENTS_URL}
-                      title="Book a meeting"
-                      className="w-full h-full"
-                      frameBorder="0"
-                      loading="lazy"
-                      referrerPolicy="no-referrer-when-downgrade"
-                    />
-                  </div>
-                </Card>
+                <div className="relative group">
+                  {/* Background decoration */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-400 via-blue-500 to-cyan-400 rounded-3xl opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500"></div>
+                  
+                  <Card className="relative bg-white/80 backdrop-blur-sm border-0 rounded-3xl overflow-hidden shadow-2xl">
+                    <div className="aspect-[4/3] sm:aspect-video">
+                      <iframe
+                        src={import.meta.env.VITE_GOOGLE_APPOINTMENTS_URL}
+                        title="Book a meeting"
+                        className="w-full h-full"
+                        frameBorder="0"
+                        loading="lazy"
+                        referrerPolicy="no-referrer-when-downgrade"
+                      />
+                    </div>
+                  </Card>
+                </div>
               </div>
             </div>
           </div>
@@ -272,17 +316,28 @@ export default function Contact() {
       )}
 
       {/* Map Section (Optional) */}
-      <section className="section-mobile bg-gradient-to-br from-slate-50 to-blue-50/30">
-        <div className="max-w-7xl mx-auto container-mobile">
-          <Card className="glass-card overflow-hidden animate-slide-up">
-            <div className="aspect-video bg-gradient-to-br from-blue-100 to-cyan-100 flex items-center justify-center">
-              <div className="text-center">
-                <MapPin className="w-16 h-16 text-primary mx-auto mb-4" />
-                <p className="text-lg font-semibold text-foreground">Jakarta, Indonesia</p>
-                <p className="text-sm text-muted-foreground">Map placeholder</p>
+      <section className="py-20 lg:py-32 bg-gradient-to-br from-slate-50 via-blue-50/30 to-purple-50/30 relative overflow-hidden">
+        {/* Background decorations */}
+        <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-blue-400/20 to-blue-600/20 rounded-full blur-3xl translate-x-48 -translate-y-48"></div>
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-br from-cyan-400/20 to-blue-500/20 rounded-full blur-3xl -translate-x-48 translate-y-48"></div>
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+          <div className="relative group">
+            {/* Background decoration */}
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-400 via-blue-500 to-cyan-400 rounded-3xl opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500"></div>
+            
+            <Card className="relative bg-white/80 backdrop-blur-sm border-0 rounded-3xl overflow-hidden shadow-2xl animate-slide-up">
+              <div className="aspect-video bg-gradient-to-br from-blue-100 via-blue-50 to-cyan-100 flex items-center justify-center">
+                <div className="text-center">
+                  <div className="inline-flex p-6 bg-gradient-to-br from-blue-500 to-blue-600 rounded-3xl shadow-2xl mb-6">
+                    <MapPin className="w-16 h-16 text-white" />
+                  </div>
+                  <h3 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-blue-600 via-blue-700 to-cyan-600 bg-clip-text text-transparent mb-2">Jakarta, Indonesia</h3>
+                  <p className="text-lg text-gray-600">Map placeholder - Lokasi kantor kami</p>
+                </div>
               </div>
-            </div>
-          </Card>
+            </Card>
+          </div>
         </div>
       </section>
 

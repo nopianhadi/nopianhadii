@@ -149,7 +149,7 @@ export default function ProjectsShowcase() {
             Proyek Portfolio
           </h2>
           <p className="text-xs sm:text-sm md:text-base text-muted-foreground max-w-2xl mx-auto px-4">
-            Lihat proyek-proyek yang telah saya kembangkan untuk berbagai industri
+            Lihat website dan aplikasi mobile yang telah kami kembangkan untuk berbagai industri
           </p>
           <div className="mt-4 flex justify-center">
             <Button
@@ -158,7 +158,7 @@ export default function ProjectsShowcase() {
               asChild
               data-testid="button-contact-me"
             >
-              <a href="/contact">Hubungi Saya</a>
+              <a href="/contact">Hubungi Kami</a>
             </Button>
           </div>
         </div>

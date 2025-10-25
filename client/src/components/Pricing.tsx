@@ -4,46 +4,46 @@ import { Check } from "lucide-react";
 
 const plans = [
   {
-    name: "Starter",
-    price: "Rp 1.500.000",
+    name: "Website Basic",
+    price: "Rp 2.500.000",
     period: "/ proyek",
-    description: "Dashboard dasar untuk bisnis yang baru memulai",
+    description: "Website company profile untuk bisnis yang baru memulai",
     features: [
-      "Dashboard dasar",
-      "Integrasi 3 API",
-      "Real-time analytics",
-      "Email support",
-      "1 user account",
+      "Responsive design",
+      "5 halaman utama",
+      "Contact form",
+      "SEO optimization",
+      "1 tahun maintenance",
     ],
     highlighted: false,
   },
   {
-    name: "Professional",
-    price: "Rp 4.500.000",
+    name: "Website Professional",
+    price: "Rp 7.500.000",
     period: "/ proyek",
-    description: "Solusi lengkap untuk bisnis yang berkembang",
+    description: "Website lengkap dengan fitur advanced untuk bisnis berkembang",
     features: [
-      "Advanced dashboard",
-      "Unlimited API integration",
-      "AI/ML integration",
+      "Custom design & development",
+      "E-commerce integration",
+      "CMS admin panel",
+      "Payment gateway",
+      "Mobile app (PWA)",
       "Priority support",
-      "Up to 10 users",
-      "Custom analytics",
     ],
     highlighted: true,
   },
   {
-    name: "Enterprise",
-    price: "Custom",
-    period: "",
-    description: "Solusi khusus untuk kebutuhan enterprise",
+    name: "Mobile App",
+    price: "Rp 15.000.000",
+    period: "/ proyek",
+    description: "Aplikasi mobile native untuk iOS dan Android",
     features: [
-      "Custom AI development",
-      "Dedicated support team",
-      "On-premise deployment",
-      "Unlimited users",
-      "SLA guarantee",
-      "Training & consultation",
+      "Cross-platform development",
+      "Custom UI/UX design",
+      "API integration",
+      "Push notifications",
+      "App store deployment",
+      "3 bulan maintenance",
     ],
     highlighted: false,
   },
@@ -51,27 +51,26 @@ const plans = [
 
 export default function Pricing() {
   return (
-    <section className="google-section bg-background google-fade-in" id="pricing">
-      <div className="google-container">
-        <div className="text-center space-y-4 mb-16 google-slide-up">
-          <h2 className="google-heading text-2xl sm:text-3xl md:text-4xl">
+    <section className="py-16 lg:py-24 bg-gray-50" id="pricing">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight tracking-tight">
             Paket Harga
           </h2>
-          <p className="google-body text-sm sm:text-base max-w-2xl mx-auto">
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
             Pilih paket yang sesuai dengan kebutuhan bisnis Anda
           </p>
         </div>
 
-        <div className="google-grid google-grid-3 gap-4 sm:gap-6 md:gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {plans.map((plan, index) => (
             <Card
               key={plan.name}
-              className={`google-card-elevated transition-all duration-200 google-fade-in group ${
+              className={`border border-gray-200 rounded-xl p-8 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 bg-white group ${
                 plan.highlighted
-                  ? "ring-2 ring-primary/20 shadow-lg"
+                  ? "ring-2 ring-blue-500 shadow-lg scale-105"
                   : ""
               }`}
-              style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className="p-6 space-y-6">
                 <div className="space-y-2">
@@ -97,7 +96,7 @@ export default function Pricing() {
                   variant={plan.highlighted ? "default" : "outline"}
                   className="w-full"
                 >
-                  {plan.name === "Enterprise" ? "Hubungi Kami" : "Jadwalkan Demo Gratis"}
+                  {plan.name === "Mobile App" ? "Konsultasi Gratis" : "Mulai Proyek"}
                 </Button>
 
                 <div className="space-y-3 pt-4">

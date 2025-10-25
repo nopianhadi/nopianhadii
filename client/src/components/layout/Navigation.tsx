@@ -17,12 +17,12 @@ export default function Navigation() {
   useSmoothScroll({ offset: 80 });
   
   const menuItems = [
-    { label: "Produk", href: "/#product" },
-    { label: "Gallery", href: "/gallery" },
+    { label: "Layanan", href: "/#product" },
+    { label: "Portfolio", href: "/gallery" },
     { label: "Tim", href: "/#team" },
     { label: "Testimoni", href: "/#testimonials" },
     { label: "Harga", href: "/#pricing" },
-    { label: "Mobile UI", href: "/mobile-showcase" },
+    { label: "Mobile Demo", href: "/mobile-showcase" },
     { label: "Tentang", href: "/about" },
     { label: "Kontak", href: "/contact" },
   ];
@@ -102,7 +102,7 @@ export default function Navigation() {
               data-testid="button-start-trial"
             >
               <a href="/contact">
-                Mulai Gratis
+                Konsultasi Gratis
               </a>
             </Button>
           </div>
@@ -188,7 +188,7 @@ export default function Navigation() {
                       <div className="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center">
                         <span className="text-white text-xs font-medium">🚀</span>
                       </div>
-                      Mulai Gratis
+                      Konsultasi Gratis
                     </a>
                   </Button>
                 </div>

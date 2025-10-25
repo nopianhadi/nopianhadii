@@ -5,6 +5,9 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Import portfolio animations */
+@import './styles/portfolio-animations.css';
+
 /* GOOGLE AI STUDIO INSPIRED - Clean White Theme */
 :root {
   --button-outline: rgba(0, 0, 0, .08);
@@ -160,167 +163,60 @@
     letter-spacing: -0.02em;
   }
 
+  /* Consistent heading sizes - Mobile first approach */
   h1 {
-    @apply text-3xl sm:text-4xl md:text-5xl;
-    font-weight: 600;
+    @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl;
+    font-weight: 700;
+    line-height: 1.1;
   }
 
   h2 {
-    @apply text-2xl sm:text-3xl md:text-4xl;
+    @apply text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl;
     font-weight: 600;
+    line-height: 1.2;
   }
 
   h3 {
-    @apply text-xl sm:text-2xl md:text-3xl;
-    font-weight: 500;
+    @apply text-lg sm:text-xl md:text-2xl lg:text-3xl;
+    font-weight: 600;
+    line-height: 1.3;
   }
 
   h4 {
-    @apply text-lg sm:text-xl md:text-2xl;
+    @apply text-base sm:text-lg md:text-xl lg:text-2xl;
     font-weight: 500;
+    line-height: 1.4;
   }
 
   h5 {
-    @apply text-base sm:text-lg md:text-xl;
+    @apply text-sm sm:text-base md:text-lg lg:text-xl;
     font-weight: 500;
+    line-height: 1.4;
   }
 
   h6 {
-    @apply text-sm sm:text-base md:text-lg;
+    @apply text-xs sm:text-sm md:text-base lg:text-lg;
     font-weight: 500;
+    line-height: 1.4;
   }
 
+  /* Consistent paragraph sizes */
   p {
-    @apply text-sm sm:text-base leading-relaxed text-muted-foreground;
+    @apply text-sm sm:text-base md:text-lg leading-relaxed text-muted-foreground;
     font-family: 'Google Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Roboto', 'Segoe UI', sans-serif;
     font-weight: 400;
     letter-spacing: -0.01em;
+    line-height: 1.6;
   }
 
   strong,
   b {
     @apply font-medium text-foreground;
   }
-
-  /* Mobile-optimized text sizes - Balanced for readability */
-  @media (max-width: 640px) {
-    .text-xs {
-      font-size: 0.625rem;
-      line-height: 0.875rem;
-    }
-
-    /* 10px */
-    .text-sm {
-      font-size: 0.75rem;
-      line-height: 1rem;
-    }
-
-    /* 12px */
-    .text-base {
-      font-size: 0.875rem;
-      line-height: 1.25rem;
-    }
-
-    /* 14px */
-    .text-lg {
-      font-size: 1rem;
-      line-height: 1.5rem;
-    }
-
-    /* 16px */
-    .text-xl {
-      font-size: 1.125rem;
-      line-height: 1.5rem;
-    }
-
-    /* 18px */
-    .text-2xl {
-      font-size: 1.25rem;
-      line-height: 1.75rem;
-    }
-
-    /* 20px */
-    .text-3xl {
-      font-size: 1.5rem;
-      line-height: 2rem;
-    }
-
-    /* 24px */
-    .text-4xl {
-      font-size: 1.75rem;
-      line-height: 2.25rem;
-    }
-
-    /* 28px */
-    .text-5xl {
-      font-size: 2rem;
-      line-height: 2.5rem;
-    }
-
-    /* 32px */
-    .text-6xl {
-      font-size: 2.25rem;
-      line-height: 1;
-    }
-
-    /* 36px */
-  }
-
-  /* Default sizes for larger screens */
-  .text-xs {
-    font-size: 0.75rem;
-    line-height: 1rem;
-  }
-
-  .text-sm {
-    font-size: 0.875rem;
-    line-height: 1.25rem;
-  }
-
-  .text-base {
-    font-size: 1rem;
-    line-height: 1.5rem;
-  }
-
-  .text-lg {
-    font-size: 1.125rem;
-    line-height: 1.75rem;
-  }
-
-  .text-xl {
-    font-size: 1.25rem;
-    line-height: 1.75rem;
-  }
-
-  .text-2xl {
-    font-size: 1.5rem;
-    line-height: 2rem;
-  }
-
-  .text-3xl {
-    font-size: 1.875rem;
-    line-height: 2.25rem;
-  }
-
-  .text-4xl {
-    font-size: 2.25rem;
-    line-height: 2.5rem;
-  }
-
-  .text-5xl {
-    font-size: 3rem;
-    line-height: 1;
-  }
-
-  .text-6xl {
-    font-size: 3.75rem;
-    line-height: 1;
-  }
 }
 
 /* GOOGLE AI STUDIO UTILITIES */
 @layer utilities {
-
   /* Google AI Studio Card Styles */
   .google-card {
     background: hsl(var(--card));
@@ -402,68 +298,6 @@
     line-height: 1.6;
   }
 
-  /* Google AI Studio Layout */
-  .google-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1.5rem;
-  }
-
-  .google-section {
-    padding: 3rem 0;
-  }
-
-  .google-grid {
-    display: grid;
-    gap: 1.5rem;
-  }
-
-  .google-grid-2 {
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  }
-
-  .google-grid-3 {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  }
-
-  /* Google AI Studio Sidebar */
-  .google-sidebar {
-    background: hsl(var(--sidebar));
-    border-right: 1px solid hsl(var(--sidebar-border));
-    width: 240px;
-    min-height: 100vh;
-  }
-
-  .google-sidebar-item {
-    display: flex;
-    align-items: center;
-    padding: 0.75rem 1rem;
-    color: hsl(var(--sidebar-foreground));
-    text-decoration: none;
-    border-radius: 0.5rem;
-    margin: 0.25rem 0.5rem;
-    font-weight: 400;
-    font-size: 0.875rem;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .google-sidebar-item:hover {
-    background: hsl(var(--sidebar-accent));
-  }
-
-  .google-sidebar-item.active {
-    background: hsl(var(--sidebar-primary));
-    color: hsl(var(--sidebar-primary-foreground));
-    font-weight: 500;
-  }
-
-  /* Google AI Studio Icons */
-  .google-icon {
-    width: 1.25rem;
-    height: 1.25rem;
-    margin-right: 0.75rem;
-  }
-
   /* Google AI Studio Animations */
   .google-fade-in {
     animation: googleFadeIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -495,22 +329,151 @@
   }
 }
 
-/* Mobile-optimized glass cards */
-.glass-card-mobile {
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+/* Enhanced spacing utilities - Consistent and balanced */
+@layer utilities {
+  /* Container spacing - Consistent across all screen sizes */
+  .container-responsive {
+    @apply px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  /* Section spacing - Better vertical rhythm */
+  .section-spacing-sm {
+    @apply py-8 sm:py-12 md:py-16;
+  }
+
+  .section-spacing-md {
+    @apply py-12 sm:py-16 md:py-20 lg:py-24;
+  }
+
+  .section-spacing-lg {
+    @apply py-16 sm:py-20 md:py-24 lg:py-32 xl:py-40;
+  }
+
+  /* Hero text sizes - Consistent across pages */
+  .text-hero-title {
+    @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl;
+    font-weight: 700;
+    line-height: 1.1;
+  }
+
+  .text-hero-subtitle {
+    @apply text-lg sm:text-xl md:text-2xl lg:text-3xl;
+    font-weight: 400;
+    line-height: 1.4;
+  }
+
+  /* Badge text sizes */
+  .text-badge-md {
+    @apply text-sm sm:text-base;
+    font-weight: 500;
+    line-height: 1.2;
+  }
+
+  /* Button text sizes */
+  .text-button-lg {
+    @apply text-base sm:text-lg;
+    font-weight: 500;
+    line-height: 1.2;
+  }
+
+  /* Enhanced font weight utilities */
+  .font-semibold-responsive {
+    font-weight: 600;
+  }
+
+  .font-bold-responsive {
+    font-weight: 700;
+  }
+
+  .font-medium-responsive {
+    font-weight: 500;
+  }
+
+  /* Element spacing utilities */
+  .element-spacing-xs {
+    @apply mb-2 sm:mb-3;
+  }
+
+  .element-spacing-sm {
+    @apply mb-4 sm:mb-6;
+  }
+
+  .element-spacing-md {
+    @apply mb-6 sm:mb-8;
+  }
+
+  .element-spacing-lg {
+    @apply mb-8 sm:mb-12;
+  }
+
+  /* Card spacing utilities */
+  .card-spacing-sm {
+    @apply p-4 sm:p-6;
+  }
+
+  .card-spacing-md {
+    @apply p-6 sm:p-8;
+  }
+
+  .card-spacing-lg {
+    @apply p-8 sm:p-12;
+  }
+
+  /* Text responsive utilities */
+  .text-responsive-xl {
+    @apply text-xl sm:text-2xl md:text-3xl;
+  }
+
+  .text-responsive-2xl {
+    @apply text-2xl sm:text-3xl md:text-4xl;
+  }
+
+  .text-card-description {
+    @apply text-sm sm:text-base;
+  }
+
+  /* Enhanced gap utilities - Better spacing between grid items */
+  .gap-responsive-sm {
+    @apply gap-4 sm:gap-5 md:gap-6 lg:gap-7;
+  }
+
+  .gap-responsive-lg {
+    @apply gap-8 sm:gap-10 md:gap-12 lg:gap-14;
+  }
+
+  /* Mobile-optimized icon utilities */
+  .icon-mobile-sm {
+    @apply w-4 h-4 sm:w-5 sm:h-5;
+  }
+
+  .icon-mobile-md {
+    @apply w-5 h-5 sm:w-6 sm:h-6;
+  }
+
+  .icon-mobile-lg {
+    @apply w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8;
+  }
+
+  /* Mobile touch target */
+  .tap-target {
+    @apply min-h-[44px] touch-manipulation;
+  }
+
+  /* Mobile card hover optimization */
+  .mobile-card-hover {
+    @apply tap-target;
+  }
+
+  @media (max-width: 768px) {
+    .mobile-card-hover:hover {
+      transform: translateY(-2px) !important;
+    }
+  }
 }
 
-.glass-card-mobile:hover {
-  background: rgba(255, 255, 255, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
-  transform: translateY(-2px);
-}
-
+/* Basic animations */
 .animate-fade-in {
   animation: fadeIn 0.6s ease-in-out;
 }
@@ -523,42 +486,11 @@
   animation: float 6s ease-in-out infinite;
 }
 
-.animate-glow {
-  animation: glow 2s ease-in-out infinite alternate;
-}
-
-/* Mobile-optimized animations */
-@media (max-width: 768px) {
-  .animate-fade-in {
-    animation: fadeIn 0.4s ease-in-out;
-  }
-
-  .animate-slide-up {
-    animation: slideUp 0.6s ease-out;
-  }
-
-  .glass-card {
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
-  }
-
-  .glass-card:hover {
-    background: rgba(255, 255, 255, 0.12);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
-    transform: translateY(-1px);
-  }
-}
-
 @keyframes fadeIn {
   from {
     opacity: 0;
     transform: translateY(20px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
@@ -570,7 +502,6 @@
     opacity: 0;
     transform: translateY(30px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
@@ -578,94 +509,11 @@
 }
 
 @keyframes float {
-
-  0%,
-  100% {
+  0%, 100% {
     transform: translateY(0px);
   }
-
   50% {
     transform: translateY(-20px);
-  }
-}
-
-@keyframes glow {
-  from {
-    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
-  }
-
-  to {
-    box-shadow: 0 0 30px rgba(59, 130, 246, 0.5);
-  }
-}
-
-@keyframes gradientShift {
-
-  0%,
-  100% {
-    background-position: 0% 50%;
-  }
-
-  50% {
-    background-position: 100% 50%;
-  }
-}
-
-@keyframes bounceSlow {
-
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-10px);
-  }
-}
-
-@keyframes pulseSlow {
-
-  0%,
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-
-  50% {
-    opacity: 0.8;
-    transform: scale(1.05);
-  }
-}
-
-@keyframes floatSlow {
-
-  0%,
-  100% {
-    transform: translateY(0px) translateX(0px);
-  }
-
-  25% {
-    transform: translateY(-15px) translateX(10px);
-  }
-
-  50% {
-    transform: translateY(-10px) translateX(-10px);
-  }
-
-  75% {
-    transform: translateY(-20px) translateX(5px);
-  }
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
   }
 }
 
@@ -675,7 +523,6 @@
     opacity: 0;
     transform: translateY(8px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
@@ -687,1417 +534,8 @@
     opacity: 0;
     transform: translateY(16px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-@keyframes googlePulse {
-
-  0%,
-  100% {
-    opacity: 1;
-  }
-
-  50% {
-    opacity: 0.8;
-  }
-}
-
-@keyframes googleGlow {
-
-  0%,
-  100% {
-    box-shadow: 0 0 8px rgba(59, 130, 246, 0.2);
-  }
-
-  50% {
-    box-shadow: 0 0 16px rgba(59, 130, 246, 0.4);
-  }
-}
-
-/* Mobile-responsive spacing utilities - Balanced for readability */
-@layer utilities {
-  .container-mobile {
-    @apply px-4 sm:px-6 md:px-8 lg:px-12;
-  }
-
-  .section-mobile {
-    @apply py-12 sm:py-16 md:py-20 lg:py-24 xl:py-32;
-  }
-
-  .card-mobile {
-    @apply p-4 sm:p-6 md:p-8 lg:p-10;
-  }
-
-  /* Better text utilities for mobile readability */
-  .text-mobile-xs {
-    @apply text-xs sm:text-sm;
-  }
-
-  .text-mobile-sm {
-    @apply text-sm sm:text-base;
-  }
-
-  .text-mobile-base {
-    @apply text-sm sm:text-base md:text-lg;
-  }
-
-  .text-mobile-lg {
-    @apply text-base sm:text-lg md:text-xl lg:text-2xl;
-  }
-
-  .text-mobile-xl {
-    @apply text-lg sm:text-xl md:text-2xl lg:text-3xl;
-  }
-
-  .text-mobile-2xl {
-    @apply text-xl sm:text-2xl md:text-3xl lg:text-4xl;
-  }
-
-  .text-mobile-3xl {
-    @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl;
-  }
-
-  /* Better spacing for mobile */
-  .gap-mobile-xs {
-    @apply gap-2 sm:gap-3 md:gap-4;
-  }
-
-  .gap-mobile-sm {
-    @apply gap-3 sm:gap-4 md:gap-6;
-  }
-
-  .gap-mobile-md {
-    @apply gap-4 sm:gap-6 md:gap-8;
-  }
-
-  .gap-mobile-lg {
-    @apply gap-6 sm:gap-8 md:gap-10;
-  }
-
-  /* Better padding for mobile */
-  .p-mobile-xs {
-    @apply p-2 sm:p-3 md:p-4;
-  }
-
-  .p-mobile-sm {
-    @apply p-3 sm:p-4 md:p-6;
-  }
-
-  .p-mobile-md {
-    @apply p-4 sm:p-6 md:p-8;
-  }
-
-  .p-mobile-lg {
-    @apply p-6 sm:p-8 md:p-10;
-  }
-
-  /* Mobile-optimized button utilities */
-  .btn-mobile-touch {
-    @apply min-h-[44px] min-w-[44px] touch-manipulation;
-  }
-
-  .btn-mobile-compact {
-    @apply h-8 sm:h-9 px-3 sm:px-4 text-xs sm:text-sm;
-  }
-
-  .btn-mobile-comfortable {
-    @apply h-10 sm:h-11 px-4 sm:px-6 text-sm sm:text-base;
-  }
-
-  /* Mobile-optimized icon utilities */
-  .icon-mobile-xs {
-    @apply w-3 h-3 sm:w-4 sm:h-4;
-  }
-
-  .icon-mobile-sm {
-    @apply w-4 h-4 sm:w-5 sm:h-5;
-  }
-
-  .icon-mobile-md {
-    @apply w-5 h-5 sm:w-6 sm:h-6;
-  }
-
-  .icon-mobile-lg {
-    @apply w-6 h-6 sm:w-7 sm:h-7;
-  }
-
-  /* Mobile-optimized card utilities */
-  .card-mobile-compact {
-    @apply p-3 sm:p-4 rounded-lg sm:rounded-xl;
-  }
-
-  .card-mobile-comfortable {
-    @apply p-4 sm:p-6 rounded-xl sm:rounded-2xl;
-  }
-
-  .card-mobile-spacious {
-    @apply p-6 sm:p-8 rounded-xl sm:rounded-2xl;
-  }
-}
-
-/* Mobile-optimized button styles - Balanced and readable */
-@media (max-width: 640px) {
-  .btn-mobile {
-    @apply text-xs px-3 py-2 min-h-[36px];
-  }
-
-  .btn-mobile-lg {
-    @apply text-sm px-4 py-2.5 min-h-[40px];
-  }
-
-  /* Better button sizing for mobile touch targets */
-  button,
-  .button {
-    font-size: 0.75rem !important;
-    /* 12px */
-    padding: 0.5rem 0.75rem !important;
-    /* 8px 12px */
-    min-height: 36px !important;
-    /* Better touch target */
-  }
-
-  /* Responsive images on mobile */
-  img {
-    max-width: 100% !important;
-    height: auto !important;
-  }
-
-  /* Better aspect ratio handling */
-  .aspect-video img,
-  .aspect-square img,
-  [class*="aspect"] img {
-    object-fit: cover !important;
-  }
-
-  /* Improved text sizing for mobile readability */
-  /* Force smaller font for all text elements */
-  span,
-  div,
-  p,
-  a,
-  li,
-  td,
-  th,
-  label {
-    font-size: 0.875rem !important;
-    /* 14px - Better readability */
-  }
-
-  /* Input elements need 16px to prevent zoom on iOS */
-  input,
-  textarea,
-  select {
-    font-size: 16px !important;
-  }
-
-  /* Better heading hierarchy for mobile */
-  h1,
-  h1 * {
-    font-size: 1.5rem !important;
-    /* 24px */
-    line-height: 2rem !important;
-    font-weight: 600 !important;
-    font-family: 'Inter', sans-serif !important;
-  }
-
-  h2,
-  h2 * {
-    font-size: 1.25rem !important;
-    /* 20px */
-    line-height: 1.75rem !important;
-    font-weight: 600 !important;
-    font-family: 'Inter', sans-serif !important;
-  }
-
-  h3,
-  h3 * {
-    font-size: 1.125rem !important;
-    /* 18px */
-    line-height: 1.5rem !important;
-    font-weight: 500 !important;
-    font-family: 'Inter', sans-serif !important;
-  }
-
-  h4,
-  h4 * {
-    font-size: 1rem !important;
-    /* 16px */
-    line-height: 1.5rem !important;
-    font-weight: 500 !important;
-    font-family: 'Inter', sans-serif !important;
-  }
-
-  h5,
-  h5 * {
-    font-size: 0.875rem !important;
-    /* 14px */
-    line-height: 1.25rem !important;
-    font-weight: 500 !important;
-    font-family: 'Inter', sans-serif !important;
-  }
-
-  h6,
-  h6 * {
-    font-size: 0.75rem !important;
-    /* 12px */
-    line-height: 1rem !important;
-    font-weight: 500 !important;
-    font-family: 'Inter', sans-serif !important;
-  }
-
-  /* Better paragraph styling */
-  p {
-    font-size: 0.875rem !important;
-    /* 14px */
-    line-height: 1.5rem !important;
-    font-weight: 400 !important;
-    font-family: 'Inter', sans-serif !important;
-  }
-
-  /* Compact cards on mobile */
-  .card,
-  [class*="card"] {
-    padding: 0.75rem !important;
-    /* 12px */
-    border-radius: 0.5rem !important;
-    /* 8px */
-  }
-
-  /* Appropriately sized icons for mobile */
-  svg,
-  .icon {
-    width: 1rem !important;
-    /* 16px */
-    height: 1rem !important;
-    /* 16px */
-  }
-
-  /* Icon size variants */
-  .icon-sm,
-  svg.icon-sm {
-    width: 0.875rem !important;
-    /* 14px */
-    height: 0.875rem !important;
-  }
-
-  .icon-lg,
-  svg.icon-lg {
-    width: 1.25rem !important;
-    /* 20px */
-    height: 1.25rem !important;
-  }
-
-  /* Better spacing on mobile - Balanced for readability */
-  .space-y-8>*+* {
-    margin-top: 1rem !important;
-  }
-
-  /* 16px */
-  .space-y-6>*+* {
-    margin-top: 0.75rem !important;
-  }
-
-  /* 12px */
-  .space-y-4>*+* {
-    margin-top: 0.5rem !important;
-  }
-
-  /* 8px */
-  .space-y-3>*+* {
-    margin-top: 0.375rem !important;
-  }
-
-  /* 6px */
-  .space-y-2>*+* {
-    margin-top: 0.375rem !important;
-  }
-
-  /* 6px */
-  .space-y-1>*+* {
-    margin-top: 0.25rem !important;
-  }
-
-  /* 4px */
-
-  /* Better gaps on mobile */
-  .gap-8 {
-    gap: 1rem !important;
-  }
-
-  /* 16px */
-  .gap-6 {
-    gap: 0.75rem !important;
-  }
-
-  /* 12px */
-  .gap-4 {
-    gap: 0.5rem !important;
-  }
-
-  /* 8px */
-  .gap-3 {
-    gap: 0.375rem !important;
-  }
-
-  /* 6px */
-  .gap-2 {
-    gap: 0.375rem !important;
-  }
-
-  /* 6px */
-  .gap-1 {
-    gap: 0.25rem !important;
-  }
-
-  /* 4px */
-
-  /* Better padding on mobile */
-  .p-8 {
-    padding: 1rem !important;
-  }
-
-  /* 16px */
-  .p-6 {
-    padding: 0.75rem !important;
-  }
-
-  /* 12px */
-  .p-4 {
-    padding: 0.5rem !important;
-  }
-
-  /* 8px */
-  .p-3 {
-    padding: 0.375rem !important;
-  }
-
-  /* 6px */
-  .p-2 {
-    padding: 0.375rem !important;
-  }
-
-  /* 6px */
-  .p-1 {
-    padding: 0.25rem !important;
-  }
-
-  /* 4px */
-
-  /* Better margins on mobile */
-  .m-8 {
-    margin: 1rem !important;
-  }
-
-  /* 16px */
-  .m-6 {
-    margin: 0.75rem !important;
-  }
-
-  /* 12px */
-  .m-4 {
-    margin: 0.5rem !important;
-  }
-
-  /* 8px */
-  .m-3 {
-    margin: 0.375rem !important;
-  }
-
-  /* 6px */
-  .m-2 {
-    margin: 0.375rem !important;
-  }
-
-  /* 6px */
-  .m-1 {
-    margin: 0.25rem !important;
-  }
-
-  /* 4px */
-
-  /* Better section spacing */
-  section {
-    padding-top: 2rem !important;
-    /* 32px */
-    padding-bottom: 2rem !important;
-    /* 32px */
-  }
-
-  /* Better container spacing */
-  .container,
-  [class*="container"] {
-    padding-left: 1rem !important;
-    /* 16px */
-    padding-right: 1rem !important;
-    /* 16px */
-  }
-
-  /* Better heading margins */
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    margin-top: 0.75rem !important;
-    /* 12px */
-    margin-bottom: 0.5rem !important;
-    /* 8px */
-  }
-
-  /* Better paragraph spacing */
-  p {
-    margin-top: 0.5rem !important;
-    /* 8px */
-    margin-bottom: 0.5rem !important;
-    /* 8px */
-  }
-
-  /* Better list spacing */
-  ul,
-  ol {
-    margin-top: 0.5rem !important;
-    margin-bottom: 0.5rem !important;
-    padding-left: 1.25rem !important;
-  }
-
-  li {
-    margin-top: 0.25rem !important;
-    margin-bottom: 0.25rem !important;
-  }
-
-  /* Better badges on mobile */
-  .badge,
-  [class*="badge"] {
-    font-size: 0.625rem !important;
-    /* 10px */
-    padding: 0.25rem 0.5rem !important;
-    /* 4px 8px */
-  }
-
-  /* Better rounded corners on mobile */
-  .rounded-3xl {
-    border-radius: 1rem !important;
-  }
-
-  /* 16px */
-  .rounded-2xl {
-    border-radius: 0.75rem !important;
-  }
-
-  /* 12px */
-  .rounded-xl {
-    border-radius: 0.5rem !important;
-  }
-
-  /* 8px */
-  .rounded-lg {
-    border-radius: 0.375rem !important;
-  }
-
-  /* 6px */
-}
-
-/* Mobile-optimized card layouts */
-@media (max-width: 768px) {
-  .grid-mobile-1 {
-    @apply grid-cols-1;
-  }
-
-  .grid-mobile-2 {
-    @apply grid-cols-1 sm:grid-cols-2;
-  }
-
-  .grid-mobile-3 {
-    @apply grid-cols-1 sm:grid-cols-2 lg:grid-cols-3;
-  }
-
-  .grid-mobile-4 {
-    @apply grid-cols-1 sm:grid-cols-2 lg:grid-cols-4;
-  }
-
-  .gap-mobile-sm {
-    @apply gap-3 sm:gap-4;
-  }
-
-  .gap-mobile-md {
-    @apply gap-4 sm:gap-6;
-  }
-
-  .gap-mobile-lg {
-    @apply gap-6 sm:gap-8;
-  }
-}
-
-/* Touch-friendly interactions for mobile */
-@media (hover: none) and (pointer: coarse) {
-  .glass-card:hover {
-    transform: none;
-    background: rgba(255, 255, 255, 0.08);
-  }
-
-  .glass-card:active {
-    transform: scale(0.98);
-    background: rgba(255, 255, 255, 0.12);
-  }
-}
-
-/* Mobile-optimized shadows */
-@media (max-width: 768px) {
-  .shadow-mobile-sm {
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  }
-
-  .shadow-mobile-md {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  }
-
-  .shadow-mobile-lg {
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
-  }
-}
-
-/* Better text rendering on mobile */
-@media (max-width: 768px) {
-  body {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeLegibility;
-  }
-
-  * {
-    -webkit-text-size-adjust: 100%;
-  }
-}
-
-/* Mobile-specific glass morphism enhancements */
-@media (max-width: 768px) {
-  .glass-card {
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-  }
-
-  .glass {
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-  }
-}
-
-/* Improved mobile navigation */
-@media (max-width: 768px) {
-  .mobile-nav-item {
-    @apply py-3 px-4 text-base font-medium;
-  }
-
-  .mobile-nav-button {
-    @apply w-full justify-start text-left;
-  }
-}
-
-/* Mobile-optimized form elements */
-@media (max-width: 768px) {
-
-  input,
-  textarea,
-  select {
-    @apply text-base;
-    /* Prevents zoom on iOS */
-    font-size: 16px !important;
-  }
-
-  .form-mobile {
-    @apply space-y-4;
-  }
-
-  .form-mobile .form-group {
-    @apply space-y-2;
-  }
-
-  .form-mobile label {
-    @apply text-sm font-medium;
-  }
-
-  .form-mobile input,
-  .form-mobile textarea,
-  .form-mobile select {
-    @apply text-base px-3 py-3 rounded-lg border-2;
-    min-height: 44px;
-  }
-}
-
-/* Mobile-optimized modal dialogs */
-@media (max-width: 768px) {
-  .modal-mobile {
-    @apply fixed inset-0 z-50 overflow-y-auto;
-  }
-
-  .modal-mobile-content {
-    @apply relative min-h-screen flex items-center justify-center p-4;
-  }
-
-  .modal-mobile-card {
-    @apply relative w-full max-w-md mx-auto glass-card rounded-2xl p-6;
-  }
-}
-
-/* Better mobile scrolling */
-@media (max-width: 768px) {
-  .scroll-smooth {
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
-  }
-}
-
-/* Mobile-optimized spacing for sections */
-@media (max-width: 768px) {
-  .section-compact {
-    @apply py-8 sm:py-12;
-  }
-
-  .section-mobile {
-    @apply py-12 sm:py-16;
-  }
-}
-
-/* Safe area support for mobile devices */
-@supports (padding: max(0px)) {
-  .safe-area-pt {
-    padding-top: max(1rem, env(safe-area-inset-top));
-  }
-  
-  .safe-area-pb {
-    padding-bottom: max(1rem, env(safe-area-inset-bottom));
-  }
-  
-  .safe-area-pl {
-    padding-left: max(1rem, env(safe-area-inset-left));
-  }
-  
-  .safe-area-pr {
-    padding-right: max(1rem, env(safe-area-inset-right));
-  }
-}
-
-/* Mobile-specific improvements */
-@layer utilities {
-  /* Touch-friendly tap targets */
-  .tap-target {
-    min-height: 44px;
-    min-width: 44px;
-  }
-  
-  /* Prevent text selection on interactive elements */
-  .no-select {
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-  }
-  
-  /* Smooth scrolling for mobile */
-  .scroll-smooth-mobile {
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
-  }
-  
-  /* Hide scrollbar but keep functionality */
-  .scrollbar-hide {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-  
-  .scrollbar-hide::-webkit-scrollbar {
-    display: none;
-  }
-  
-  /* Mobile-optimized focus styles */
-  .focus-mobile {
-    @apply focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background;
-  }
-  
-  /* Haptic feedback simulation */
-  .haptic-light {
-    transition: transform 0.1s ease;
-  }
-  
-  .haptic-light:active {
-    transform: scale(0.98);
-  }
-  
-  .haptic-medium {
-    transition: transform 0.1s ease;
-  }
-  
-  .haptic-medium:active {
-    transform: scale(0.95);
-  }
-  
-  /* Mobile card hover states */
-  .mobile-card-hover {
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  
-  .mobile-card-hover:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-  }
-  
-  .mobile-card-hover:active {
-    transform: translateY(0);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  }
-  
-  /* Gradient backgrounds for mobile */
-  .gradient-mobile-primary {
-    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary) / 0.8) 100%);
-  }
-  
-  .gradient-mobile-accent {
-    background: linear-gradient(135deg, hsl(var(--accent)) 0%, hsl(var(--primary)) 100%);
-  }
-  
-  /* Mobile-optimized text gradients */
-  .text-gradient-mobile {
-    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent-foreground)) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-  
-  /* Mobile-specific animations */
-  .animate-slide-in-bottom {
-    animation: slideInBottom 0.3s ease-out;
-  }
-  
-  .animate-slide-out-bottom {
-    animation: slideOutBottom 0.2s ease-in;
-  }
-  
-  .animate-scale-in {
-    animation: scaleIn 0.2s ease-out;
-  }
-  
-  .animate-bounce-in {
-    animation: bounceIn 0.4s ease-out;
-  }
-  
-  /* Mobile swipe indicators */
-  .swipe-indicator {
-    position: relative;
-  }
-  
-  .swipe-indicator::after {
-    content: '';
-    position: absolute;
-    bottom: -8px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 32px;
-    height: 4px;
-    background: hsl(var(--muted-foreground) / 0.3);
-    border-radius: 2px;
-  }
-  
-  /* Mobile pull-to-refresh indicator */
-  .pull-to-refresh {
-    transform: translateY(-100%);
-    transition: transform 0.3s ease;
-  }
-  
-  .pull-to-refresh.active {
-    transform: translateY(0);
-  }
-}
-
-/* Mobile-specific keyframes */
-@keyframes slideInBottom {
-  from {
-    transform: translateY(100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-@keyframes slideOutBottom {
-  from {
-    transform: translateY(0);
-    opacity: 1;
-  }
-  to {
-    transform: translateY(100%);
-    opacity: 0;
-  }
-}
-
-@keyframes scaleIn {
-  from {
-    transform: scale(0.9);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-@keyframes bounceIn {
-  0% {
-    transform: scale(0.3);
-    opacity: 0;
-  }
-  50% {
-    transform: scale(1.05);
-    opacity: 0.8;
-  }
-  70% {
-    transform: scale(0.9);
-    opacity: 0.9;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-/* PWA and Mobile-specific animations */
-@keyframes slideInFromTop {
-  from {
-    transform: translateY(-100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-@keyframes slideOutToTop {
-  from {
-    transform: translateY(0);
-    opacity: 1;
-  }
-  to {
-    transform: translateY(-100%);
-    opacity: 0;
-  }
-}
-
-@keyframes slideInFromLeft {
-  from {
-    transform: translateX(-100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-@keyframes slideInFromRight {
-  from {
-    transform: translateX(100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-@keyframes progressFill {
-  from {
-    width: 0%;
-  }
-  to {
-    width: var(--progress-width, 100%);
-  }
-}
-
-@keyframes ripple {
-  0% {
-    transform: scale(0);
-    opacity: 1;
-  }
-  100% {
-    transform: scale(4);
-    opacity: 0;
-  }
-}
-
-/* Mobile-specific utility animations */
-@layer utilities {
-  .animate-slide-in-top {
-    animation: slideInFromTop 0.3s ease-out;
-  }
-  
-  .animate-slide-out-top {
-    animation: slideOutToTop 0.2s ease-in;
-  }
-  
-  .animate-slide-in-left {
-    animation: slideInFromLeft 0.3s ease-out;
-  }
-  
-  .animate-slide-in-right {
-    animation: slideInFromRight 0.3s ease-out;
-  }
-  
-  .animate-progress-fill {
-    animation: progressFill 0.3s ease-out;
-  }
-  
-  .animate-ripple {
-    animation: ripple 0.6s linear;
-  }
-  
-  /* Mobile touch feedback */
-  .touch-feedback {
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .touch-feedback::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.5);
-    transform: translate(-50%, -50%);
-    transition: width 0.6s, height 0.6s;
-  }
-  
-  .touch-feedback:active::before {
-    width: 300px;
-    height: 300px;
-  }
-
-  /* Project Gallery Animations */
-  .gallery-card-enter {
-    animation: galleryCardEnter 0.4s ease-out;
-  }
-  
-  .gallery-card-exit {
-    animation: galleryCardExit 0.3s ease-in;
-  }
-  
-  .gallery-filter-active {
-    animation: filterPulse 0.3s ease-out;
-  }
-  
-  .gallery-stagger {
-    animation: galleryStagger 0.5s ease-out both;
-  }
-  
-  /* Glassmorphism enhancements for gallery */
-  .gallery-glass {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-  }
-  
-  .gallery-glass-hover:hover {
-    background: rgba(255, 255, 255, 0.15);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
-    transform: translateY(-2px);
-  }
-  
-  /* Masonry layout animations */
-  .masonry-item {
-    animation: masonryItemAppear 0.6s ease-out both;
-  }
-  
-  /* Layout transition animations */
-  .layout-transition {
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  
-  /* Shared element transition preparation */
-  .shared-element {
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-}
-
-/* Gallery-specific keyframes */
-@keyframes galleryCardEnter {
-  0% {
-    opacity: 0;
-    transform: translateY(20px) scale(0.95);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-@keyframes galleryCardExit {
-  0% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-  100% {
-    opacity: 0;
-    transform: translateY(-20px) scale(0.95);
-  }
-}
-
-@keyframes filterPulse {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.05);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
-@keyframes galleryStagger {
-  0% {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes masonryItemAppear {
-  0% {
-    opacity: 0;
-    transform: translateY(40px) scale(0.9);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-/* Enhanced hover effects for gallery cards */
-@layer utilities {
-  .gallery-card-hover {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  
-  .gallery-card-hover:hover {
-    transform: translateY(-4px) scale(1.02);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-  }
-  
-  .gallery-card-hover:active {
-    transform: translateY(-2px) scale(1.01);
-  }
-  
-  /* Filter pill animations */
-  .filter-pill {
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .filter-pill::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    transition: left 0.5s;
-  }
-  
-  .filter-pill:hover::before {
-    left: 100%;
-  }
-  
-  /* Image loading animation */
-  .image-loading {
-    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-    background-size: 200% 100%;
-    animation: imageLoading 1.5s infinite;
-  }
-}
-
-@keyframes imageLoading {
-  0% {
-    background-position: 200% 0;
-  }
-  100% {
-    background-position: -200% 0;
-  }
-}
-
-/* Mobile-optimized badge sizing */
-@media (max-width: 768px) {
-  .badge-mobile {
-    @apply text-xs px-2 py-1;
-  }
-
-  .badge-mobile-lg {
-    @apply text-sm px-3 py-1.5;
-  }
-}
-
-/* Placeholder styling for contentEditable div */
-[contenteditable][data-placeholder]:empty::before {
-  content: attr(data-placeholder);
-  color: hsl(var(--muted-foreground));
-  pointer-events: none;
-}
-
-/* Hide ugly search cancel button in Chrome until we can style it properly */
-input[type="search"]::-webkit-search-cancel-button {
-  @apply hidden;
-}
-
-/* Hide scrollbar for horizontal scroll */
-.scrollbar-hide {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-.scrollbar-hide::-webkit-scrollbar {
-  display: none;
-}
-
-/* MODERN GRADIENT UTILITIES */
-@layer utilities {
-  .gradient-primary {
-    background: linear-gradient(135deg, hsl(250 100% 60%) 0%, hsl(280 90% 55%) 100%);
-  }
-
-  .gradient-accent {
-    background: linear-gradient(135deg, hsl(270 85% 65%) 0%, hsl(220 95% 60%) 100%);
-  }
-
-  .gradient-text-primary {
-    background: linear-gradient(135deg, hsl(250 100% 60%) 0%, hsl(280 90% 55%) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  .gradient-text-accent {
-    background: linear-gradient(135deg, hsl(270 85% 65%) 0%, hsl(220 95% 60%) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  .glow-purple {
-    box-shadow: 0 0 20px rgba(168, 85, 247, 0.4), 0 0 40px rgba(168, 85, 247, 0.2);
-  }
-
-  .glow-blue {
-    box-shadow: 0 0 20px rgba(59, 130, 246, 0.4), 0 0 40px rgba(59, 130, 246, 0.2);
-  }
-
-  .glow-hover:hover {
-    box-shadow: 0 0 30px rgba(168, 85, 247, 0.5), 0 0 60px rgba(168, 85, 247, 0.3);
-    transition: box-shadow 0.3s ease;
-  }
-
-  .border-gradient {
-    border: 1px solid transparent;
-    background-clip: padding-box;
-    position: relative;
-  }
-
-  .border-gradient::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    padding: 1px;
-    background: linear-gradient(135deg, hsl(250 100% 60%), hsl(280 90% 55%));
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    mask-composite: exclude;
-    pointer-events: none;
-  }
-
-  .smooth-transition {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .hover-lift:hover {
-    transform: translateY(-2px);
-  }
-
-  .hover-scale:hover {
-    transform: scale(1.05);
-  }
-
-  /* Dashboard Showcase Animations */
-  .animate-gradient {
-    background-size: 200% 200%;
-    animation: gradientShift 3s ease infinite;
-  }
-
-  .animate-bounce-slow {
-    animation: bounceSlow 3s ease-in-out infinite;
-  }
-
-  .animate-pulse-slow {
-    animation: pulseSlow 4s ease-in-out infinite;
-  }
-
-  .animate-float-slow {
-    animation: floatSlow 8s ease-in-out infinite;
-  }
-
-  /* Blue gradient utilities for dashboard */
-  .gradient-blue {
-    background: linear-gradient(135deg, hsl(220 90% 56%) 0%, hsl(200 95% 60%) 100%);
-  }
-
-  .gradient-blue-text {
-    background: linear-gradient(135deg, hsl(220 90% 56%) 0%, hsl(200 95% 60%) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  .gradient-cyan-blue {
-    background: linear-gradient(135deg, hsl(200 95% 60%) 0%, hsl(220 90% 56%) 100%);
-  }
-
-  .glow-blue-soft {
-    box-shadow: 0 0 30px rgba(59, 130, 246, 0.3), 0 0 60px rgba(59, 130, 246, 0.15);
-  }
-
-  .glow-cyan {
-    box-shadow: 0 0 25px rgba(34, 211, 238, 0.4), 0 0 50px rgba(34, 211, 238, 0.2);
-  }
-
-  /* Card hover effects for dashboard */
-  .card-hover-lift {
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .card-hover-lift:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 20px 40px rgba(59, 130, 246, 0.2);
-  }
-
-  /* Smooth scroll snap for carousels */
-  .scroll-snap-x {
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .scroll-snap-item {
-    scroll-snap-align: start;
-  }
-
-  /* Modern backdrop blur effects */
-  .backdrop-blur-strong {
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-  }
-
-  .backdrop-blur-soft {
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-  }
-
-  /* Modern Card Design Utilities */
-  .shadow-3xl {
-    box-shadow: 0 35px 60px -15px rgba(0, 0, 0, 0.3);
-  }
-
-  .modern-card-blue {
-    background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 50%, #1e3a8a 100%);
-  }
-
-  .modern-card-orange {
-    background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 50%, #fcd34d 100%);
-  }
-
-  .modern-card-purple {
-    background: linear-gradient(135deg, #581c87 0%, #7c3aed 50%, #581c87 100%);
-  }
-
-  .modern-card-green {
-    background: linear-gradient(135deg, #065f46 0%, #059669 50%, #065f46 100%);
-  }
-
-  /* Card decorative elements */
-  .card-circle-decoration {
-    position: absolute;
-    border-radius: 50%;
-    pointer-events: none;
-  }
-
-  /* Smooth card transitions */
-  .card-transition {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .card-hover-scale:hover {
-    transform: scale(1.02);
-  }
-
-  /* Credit card number styling */
-  .card-number {
-    font-family: 'Courier New', monospace;
-    letter-spacing: 0.1em;
-  }
-
-  /* Modern gradient overlays */
-  .gradient-overlay-blue {
-    background: linear-gradient(135deg, rgba(30, 58, 138, 0.9) 0%, rgba(30, 64, 175, 0.8) 100%);
-  }
-
-  .gradient-overlay-orange {
-    background: linear-gradient(135deg, rgba(245, 158, 11, 0.9) 0%, rgba(251, 191, 36, 0.8) 100%);
-  }
-
-  /* Animated gradient backgrounds */
-  @keyframes shimmer {
-    0% {
-      background-position: -200% center;
-    }
-
-    100% {
-      background-position: 200% center;
-    }
-  }
-
-  .animate-shimmer {
-    background-size: 200% 100%;
-    animation: shimmer 3s linear infinite;
-  }
-
-  /* Card glow effects */
-  .card-glow-blue {
-    box-shadow: 0 0 40px rgba(59, 130, 246, 0.4), 0 0 80px rgba(59, 130, 246, 0.2);
-  }
-
-  .card-glow-orange {
-    box-shadow: 0 0 40px rgba(251, 191, 36, 0.4), 0 0 80px rgba(251, 191, 36, 0.2);
-  }
-
-  .card-glow-purple {
-    box-shadow: 0 0 40px rgba(168, 85, 247, 0.4), 0 0 80px rgba(168, 85, 247, 0.2);
-  }
-
-  .card-glow-green {
-    box-shadow: 0 0 40px rgba(16, 185, 129, 0.4), 0 0 80px rgba(16, 185, 129, 0.2);
   }
 }

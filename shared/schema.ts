@@ -53,8 +53,11 @@ export type Project = {
   results?: string;
   featured: number;
   status: string;
-  createdAt: string;
-  updatedAt: string;
+  created_at: string;
+  updated_at: string;
+  // Support both formats for compatibility
+  createdAt?: string;
+  updatedAt?: string;
 };
 
 export const insertProjectSchema = z.object({

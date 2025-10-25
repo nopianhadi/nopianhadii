@@ -1,25 +1,25 @@
-import { Briefcase, Bot, Clock, TrendingUp } from "lucide-react";
+import { Globe, Smartphone, Clock, TrendingUp } from "lucide-react";
 
 const stats = [
   {
-    icon: Briefcase,
-    value: "25+",
-    label: "Bisnis telah menggunakan dashboard saya",
+    icon: Globe,
+    value: "50+",
+    label: "Website telah dikembangkan untuk berbagai industri",
   },
   {
-    icon: Bot,
-    value: "10+",
-    label: "Sistem AI diintegrasikan",
+    icon: Smartphone,
+    value: "25+",
+    label: "Aplikasi mobile berhasil diluncurkan",
   },
   {
     icon: Clock,
-    value: "90%",
-    label: "Waktu analisis manual dihemat",
+    value: "98%",
+    label: "Project diselesaikan tepat waktu",
   },
   {
     icon: TrendingUp,
-    value: "3x",
-    label: "Rata-rata ROI meningkat dalam 6 bulan",
+    value: "100%",
+    label: "Tingkat kepuasan klien dengan layanan kami",
   },
 ];
 
@@ -29,10 +29,10 @@ export default function Statistics() {
       <div className="max-w-7xl mx-auto px-6 md:px-8">
         <div className="text-center space-y-4 mb-16">
           <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
-            Hasil yang Nyata
+            Pencapaian yang Membanggakan
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Data nyata dari proyek-proyek yang telah diselesaikan
+            Track record yang solid dalam mengembangkan solusi digital untuk klien
           </p>
         </div>
 

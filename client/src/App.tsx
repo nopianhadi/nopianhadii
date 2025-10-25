@@ -22,6 +22,7 @@ import ProductLanding from "@/pages/ProductLanding";
 import GoogleAIStudio from "@/pages/GoogleAIStudio";
 import MobileDemo from "@/pages/MobileDemo";
 import ProjectGallery from "@/pages/ProjectGallery";
+
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -58,6 +59,7 @@ function Router() {
       <Route path="/mobile-showcase">
         <MobileDemo />
       </Route>
+
       <Route path="/gallery">
         <ProjectGallery />
       </Route>

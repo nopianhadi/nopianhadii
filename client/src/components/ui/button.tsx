@@ -28,10 +28,11 @@ const buttonVariants = cva(
           "bg-gradient-to-r from-blue-600 via-blue-500 to-cyan-500 text-white shadow-sm hover:shadow-md hover:translate-y-[-1px]",
       },
       size: {
-        default: "min-h-9 px-4 py-2 text-sm",
-        sm: "min-h-8 px-3 py-1.5 text-xs",
-        lg: "min-h-10 px-6 py-2.5 text-base",
-        icon: "h-9 w-9",
+        default: "min-h-10 px-4 py-2 text-button-md tap-target",
+        sm: "min-h-8 px-3 py-1.5 text-button-sm",
+        lg: "min-h-12 px-6 py-3 text-button-lg tap-target",
+        xl: "min-h-14 px-8 py-4 text-button-lg tap-target",
+        icon: "h-10 w-10 tap-target",
       },
     },
     defaultVariants: {
