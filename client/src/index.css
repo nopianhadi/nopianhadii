@@ -6,6 +6,12 @@
 @import './styles/utilities.css';
 /* Import component styles */
 @import './styles/components.css';
+/* Import mobile ultra-compact styles */
+@import './styles/mobile-ultra-compact.css';
+/* Import mobile hero fixes */
+@import './styles/mobile-hero-fix.css';
+/* Import mobile optimizations */
+@import './styles/mobile-optimizations.css';
 
 @tailwind base;
 @tailwind components;
