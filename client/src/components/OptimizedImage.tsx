@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback, memo } from "react";
 import { cn } from "@/lib/utils";
 
 interface OptimizedImageProps {
@@ -8,54 +8,61 @@ interface OptimizedImageProps {
   fallbackSrc?: string;
   onLoad?: () => void;
   onError?: () => void;
+  priority?: boolean;
+  sizes?: string;
 }
 
-export default function OptimizedImage({
+const OptimizedImage = memo(function OptimizedImage({
   src,
   alt,
   className,
   fallbackSrc = "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=400&fit=crop",
   onLoad,
-  onError
+  onError,
+  priority = false,
+  sizes = "(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
 }: OptimizedImageProps) {
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
   const [currentSrc, setCurrentSrc] = useState(src);
 
-  const handleLoad = () => {
+  const handleLoad = useCallback(() => {
     setIsLoading(false);
     onLoad?.();
-  };
+  }, [onLoad]);
 
-  const handleError = () => {
+  const handleError = useCallback(() => {
     setHasError(true);
     setIsLoading(false);
     if (currentSrc !== fallbackSrc) {
       setCurrentSrc(fallbackSrc);
     }
     onError?.();
-  };
+  }, [currentSrc, fallbackSrc, onError]);
 
   return (
     <div className="relative overflow-hidden">
       {isLoading && (
-        <div className="absolute inset-0 bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 animate-pulse" />
+        <div className="absolute inset-0 bg-gradient-to-r from-muted via-muted/50 to-muted animate-pulse" />
       )}
       <img
         src={currentSrc}
         alt={alt}
         className={cn(
-          "transition-opacity duration-300",
+          "transition-opacity duration-300 will-change-transform",
           isLoading ? "opacity-0" : "opacity-100",
           className
         )}
         onLoad={handleLoad}
         onError={handleError}
-        loading="lazy"
+        loading={priority ? "eager" : "lazy"}
+        decoding="async"
+        sizes={sizes}
+        style={{ contentVisibility: 'auto' }}
       />
       {hasError && currentSrc === fallbackSrc && (
-        <div className="absolute inset-0 flex items-center justify-center bg-gray-100">
-          <div className="text-center text-gray-500">
+        <div className="absolute inset-0 flex items-center justify-center bg-muted">
+          <div className="text-center text-muted-foreground">
             <div className="text-4xl mb-2">🖼️</div>
             <p className="text-sm">Gambar tidak tersedia</p>
           </div>
@@ -63,4 +70,6 @@ export default function OptimizedImage({
       )}
     </div>
   );
-}
+});
+
+export default OptimizedImage;

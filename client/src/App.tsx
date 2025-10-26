@@ -8,66 +8,103 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { AuthProvider } from "@/hooks/use-auth";
 import { ApiConfigProvider } from "@/hooks/use-api-config";
 import { ProtectedRoute } from "@/lib/protected-route";
+import { lazy, Suspense } from "react";
 import Home from "@/pages/Home";
-import Admin from "@/pages/Admin";
-import AuthPage from "@/pages/AuthPage";
-import ProjectDetail from "@/pages/ProjectDetail";
-import About from "@/pages/About";
-import Contact from "@/pages/Contact";
-import Dashboard from "@/pages/Dashboard";
-import LandingPage from "@/pages/LandingPage";
-import FramerLanding from "@/pages/FramerLanding";
-import ModernCards from "@/pages/ModernCards";
-import ProductLanding from "@/pages/ProductLanding";
-import GoogleAIStudio from "@/pages/GoogleAIStudio";
-import MobileDemo from "@/pages/MobileDemo";
-import ProjectGallery from "@/pages/ProjectGallery";
-
 import NotFound from "@/pages/not-found";
+
+// Lazy load components for better performance
+const Admin = lazy(() => import("@/pages/Admin"));
+const AuthPage = lazy(() => import("@/pages/AuthPage"));
+const ProjectDetail = lazy(() => import("@/pages/ProjectDetail"));
+const About = lazy(() => import("@/pages/About"));
+const Contact = lazy(() => import("@/pages/Contact"));
+const Dashboard = lazy(() => import("@/pages/Dashboard"));
+const LandingPage = lazy(() => import("@/pages/LandingPage"));
+const FramerLanding = lazy(() => import("@/pages/FramerLanding"));
+const ModernCards = lazy(() => import("@/pages/ModernCards"));
+const ProductLanding = lazy(() => import("@/pages/ProductLanding"));
+const GoogleAIStudio = lazy(() => import("@/pages/GoogleAIStudio"));
+const MobileDemo = lazy(() => import("@/pages/MobileDemo"));
+const ProjectGallery = lazy(() => import("@/pages/ProjectGallery"));
+
+// Loading component
+const PageLoader = () => (
+  <div className="min-h-screen flex items-center justify-center bg-background">
+    <div className="flex flex-col items-center gap-4">
+      <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin"></div>
+      <p className="text-sm text-muted-foreground">Loading...</p>
+    </div>
+  </div>
+);
 
 function Router() {
   return (
     <Switch>
       <Route path="/" component={Home} />
       <Route path="/auth">
-        <AuthPage />
+        <Suspense fallback={<PageLoader />}>
+          <AuthPage />
+        </Suspense>
       </Route>
       <Route path="/about">
-        <About />
+        <Suspense fallback={<PageLoader />}>
+          <About />
+        </Suspense>
       </Route>
       <Route path="/contact">
-        <Contact />
+        <Suspense fallback={<PageLoader />}>
+          <Contact />
+        </Suspense>
       </Route>
       <Route path="/landing">
-        <LandingPage />
+        <Suspense fallback={<PageLoader />}>
+          <LandingPage />
+        </Suspense>
       </Route>
       <Route path="/framer">
-        <FramerLanding />
+        <Suspense fallback={<PageLoader />}>
+          <FramerLanding />
+        </Suspense>
       </Route>
       <Route path="/dashboard">
-        <Dashboard />
+        <Suspense fallback={<PageLoader />}>
+          <Dashboard />
+        </Suspense>
       </Route>
       <Route path="/modern-cards">
-        <ModernCards />
+        <Suspense fallback={<PageLoader />}>
+          <ModernCards />
+        </Suspense>
       </Route>
       <Route path="/product">
-        <ProductLanding />
+        <Suspense fallback={<PageLoader />}>
+          <ProductLanding />
+        </Suspense>
       </Route>
       <Route path="/google-ai-studio">
-        <GoogleAIStudio />
+        <Suspense fallback={<PageLoader />}>
+          <GoogleAIStudio />
+        </Suspense>
       </Route>
       <Route path="/mobile-showcase">
-        <MobileDemo />
+        <Suspense fallback={<PageLoader />}>
+          <MobileDemo />
+        </Suspense>
       </Route>
-
       <Route path="/gallery">
-        <ProjectGallery />
+        <Suspense fallback={<PageLoader />}>
+          <ProjectGallery />
+        </Suspense>
       </Route>
       <Route path="/project/:id">
-        <ProjectDetail />
+        <Suspense fallback={<PageLoader />}>
+          <ProjectDetail />
+        </Suspense>
       </Route>
       <Route path="/admin">
-        <ProtectedRoute component={Admin} />
+        <Suspense fallback={<PageLoader />}>
+          <ProtectedRoute component={Admin} />
+        </Suspense>
       </Route>
       <Route>
         <NotFound />

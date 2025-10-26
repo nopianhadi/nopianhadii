@@ -1,22 +1,30 @@
-// import { Helmet } from "react-helmet-async";
+import { lazy, Suspense } from "react";
 import Navigation from "@/components/layout/Navigation";
 import Hero from "@/components/layout/Hero";
-import AIBusinessSolver from "@/components/ai/AIBusinessSolver";
-import AIChatbot from "@/components/ai/AIChatbot";
-import VideoShowcase from "@/components/showcase/VideoShowcase";
-import HowItWorks from "@/components/HowItWorks";
-import Statistics from "@/components/Statistics";
-import Partners from "@/components/Partners";
-import Features from "@/components/Features";
-import HomePortfolio from "@/components/HomePortfolio";
-import Pricing from "@/components/Pricing";
-import Team from "@/components/Team";
-import Testimonials from "@/components/Testimonials";
-import Industries from "@/components/Industries";
 import Footer from "@/components/layout/Footer";
-import BackToTop from "@/components/BackToTop";
-import ProgressIndicator from "@/components/ProgressIndicator";
-import FloatingCTA from "@/components/FloatingCTA";
+
+// Lazy load non-critical components for faster initial load
+const AIBusinessSolver = lazy(() => import("@/components/ai/AIBusinessSolver"));
+const VideoShowcase = lazy(() => import("@/components/showcase/VideoShowcase"));
+const HowItWorks = lazy(() => import("@/components/HowItWorks"));
+const Statistics = lazy(() => import("@/components/Statistics"));
+const Partners = lazy(() => import("@/components/Partners"));
+const Features = lazy(() => import("@/components/Features"));
+const HomePortfolio = lazy(() => import("@/components/HomePortfolio"));
+const Pricing = lazy(() => import("@/components/Pricing"));
+const Team = lazy(() => import("@/components/Team"));
+const Testimonials = lazy(() => import("@/components/Testimonials"));
+const Industries = lazy(() => import("@/components/Industries"));
+const BackToTop = lazy(() => import("@/components/BackToTop"));
+const ProgressIndicator = lazy(() => import("@/components/ProgressIndicator"));
+const FloatingCTA = lazy(() => import("@/components/FloatingCTA"));
+
+// Lightweight loading component
+const SectionLoader = () => (
+  <div className="flex justify-center py-8">
+    <div className="w-6 h-6 border-2 border-primary border-t-transparent rounded-full animate-spin"></div>
+  </div>
+);
 
 export default function Home() {
   return (
@@ -44,28 +52,69 @@ export default function Home() {
         <meta name="robots" content="index, follow" />
       </Helmet> */}
       
-      <ProgressIndicator />
+      <Suspense fallback={<SectionLoader />}>
+        <ProgressIndicator />
+      </Suspense>
       <Navigation />
       <main id="main-content">
         <Hero />
-        {/* ✨ AI Business Problem Solver - Client Input */}
-        <AIBusinessSolver />
-        <HomePortfolio />
-        <Partners />
-        <Features />
-        <VideoShowcase />
-        <HowItWorks />
-        <Statistics />
-        <Team />
-        <Testimonials />
-        <Pricing />
-        <Industries />
+        
+        {/* Critical above-the-fold content loaded immediately */}
+        <Suspense fallback={<SectionLoader />}>
+          <AIBusinessSolver />
+        </Suspense>
+        
+        <Suspense fallback={<SectionLoader />}>
+          <HomePortfolio />
+        </Suspense>
+        
+        {/* Below-the-fold content lazy loaded */}
+        <Suspense fallback={<SectionLoader />}>
+          <Partners />
+        </Suspense>
+        
+        <Suspense fallback={<SectionLoader />}>
+          <Features />
+        </Suspense>
+        
+        <Suspense fallback={<SectionLoader />}>
+          <VideoShowcase />
+        </Suspense>
+        
+        <Suspense fallback={<SectionLoader />}>
+          <HowItWorks />
+        </Suspense>
+        
+        <Suspense fallback={<SectionLoader />}>
+          <Statistics />
+        </Suspense>
+        
+        <Suspense fallback={<SectionLoader />}>
+          <Team />
+        </Suspense>
+        
+        <Suspense fallback={<SectionLoader />}>
+          <Testimonials />
+        </Suspense>
+        
+        <Suspense fallback={<SectionLoader />}>
+          <Pricing />
+        </Suspense>
+        
+        <Suspense fallback={<SectionLoader />}>
+          <Industries />
+        </Suspense>
       </main>
       <Footer />
-      <BackToTop />
-      <FloatingCTA />
-      {/* ✨ AI Chatbot Assistant - Floating */}
-      <AIChatbot />
+      
+      <Suspense fallback={null}>
+        <BackToTop />
+      </Suspense>
+      
+      <Suspense fallback={null}>
+        <FloatingCTA />
+      </Suspense>
+
     </div>
   );
 }

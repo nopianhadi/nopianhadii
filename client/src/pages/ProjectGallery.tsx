@@ -312,7 +312,7 @@ export default function ProjectGallery() {
           </div>
 
           {isLoading ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            <div className="responsive-grid">
               {Array.from({ length: 6 }).map((_, index) => (
                 <div key={index} className="skeleton-card h-80 rounded-xl" />
               ))}
@@ -334,7 +334,7 @@ export default function ProjectGallery() {
               onAction={() => setSelectedCategory("All")}
             />
           ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            <div className="responsive-grid">
               {filteredProjects.map((project, index) => (
                 <div 
                   key={project.id}

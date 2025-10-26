@@ -1,11 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { Menu, X, LogIn } from "lucide-react";
-import { useState } from "react";
+import { useState, memo, useCallback } from "react";
 import { useAuth } from "@/hooks/use-auth";
 import { useActiveSection } from "@/hooks/use-active-section";
 import { useSmoothScroll } from "@/hooks/use-smooth-scroll";
 
-export default function Navigation() {
+const Navigation = memo(function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { user } = useAuth();
   
@@ -15,6 +15,10 @@ export default function Navigation() {
   
   // Enable smooth scrolling
   useSmoothScroll({ offset: 80 });
+
+  const toggleMobileMenu = useCallback(() => {
+    setMobileMenuOpen(prev => !prev);
+  }, []);
   
   const menuItems = [
     { label: "Layanan", href: "/#product" },
@@ -199,4 +203,6 @@ export default function Navigation() {
       </div>
     </nav>
   );
-}
+});
+
+export default Navigation;

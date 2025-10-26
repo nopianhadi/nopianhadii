@@ -20,9 +20,53 @@ export default defineConfig({
     emptyOutDir: true,
     assetsDir: "assets",
     sourcemap: false,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom'],
+          router: ['wouter'],
+          ui: ['@radix-ui/react-dialog', '@radix-ui/react-dropdown-menu', '@radix-ui/react-toast'],
+          query: ['@tanstack/react-query'],
+          supabase: ['@supabase/supabase-js'],
+          icons: ['lucide-react'],
+        },
+        chunkFileNames: 'assets/[name]-[hash].js',
+        entryFileNames: 'assets/[name]-[hash].js',
+        assetFileNames: 'assets/[name]-[hash].[ext]'
+      }
+    },
+    target: 'esnext',
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: true,
+        drop_debugger: true,
+      },
+    },
+    chunkSizeWarningLimit: 1000,
   },
   server: {
     host: true,
     port: 5177,
+    hmr: {
+      overlay: false
+    },
+    fs: {
+      strict: false
+    }
+  },
+  optimizeDeps: {
+    include: [
+      'react',
+      'react-dom',
+      'wouter',
+      '@tanstack/react-query',
+      'lucide-react'
+    ],
+    exclude: ['@vite/client', '@vite/env']
+  },
+  esbuild: {
+    target: 'esnext',
+    platform: 'browser'
   },
 });
