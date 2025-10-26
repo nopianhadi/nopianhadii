@@ -19,7 +19,7 @@ export default function MobileDemo() {
               Mobile UI Components
             </div>
             
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground mb-6 sm:mb-8 leading-tight tracking-tight">
+            <h1 className="text-hero-title text-foreground mb-6 sm:mb-8">
               Modern Mobile UI/UX
             </h1>
             
@@ -30,7 +30,7 @@ export default function MobileDemo() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a 
                 href="/showcase/mobile" 
-                className="portfolio-button primary inline-flex items-center justify-center gap-3 px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700"
+                className="btn-primary-consistent bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700"
               >
                 <Smartphone className="w-5 h-5" />
                 <span>Lihat Demo</span>
@@ -39,7 +39,7 @@ export default function MobileDemo() {
               
               <a 
                 href="#features" 
-                className="portfolio-button secondary inline-flex items-center justify-center gap-3 px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg"
+                className="btn-secondary-consistent"
               >
                 <span>Fitur Unggulan</span>
                 <ArrowRight className="w-5 h-5" />
@@ -61,7 +61,7 @@ export default function MobileDemo() {
               <Zap className="w-4 h-4 sm:w-5 sm:h-5" />
               Fitur Unggulan
             </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-blue-600 via-blue-700 to-cyan-600 bg-clip-text text-transparent mb-4 sm:mb-6 leading-tight tracking-tight">
+            <h2 className="text-hero-title bg-gradient-to-r from-blue-600 via-blue-700 to-cyan-600 bg-clip-text text-transparent mb-4 sm:mb-6">
               Komponen Mobile Terdepan
             </h2>
             <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
@@ -108,7 +108,7 @@ export default function MobileDemo() {
                 gradient: "from-blue-600 to-cyan-500",
               }
             ].map((feature, index) => (
-              <div key={index} className="portfolio-card google-fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
+              <div key={index} className="card-consistent google-fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
                 <div className="space-y-4 sm:space-y-6">
                   <div className={`inline-flex p-3 sm:p-4 bg-gradient-to-br ${feature.gradient} rounded-2xl shadow-lg`}>
                     <div className="text-white flex items-center justify-center">
@@ -117,10 +117,10 @@ export default function MobileDemo() {
                   </div>
                   
                   <div className="space-y-3 sm:space-y-4">
-                    <h3 className="portfolio-title text-lg sm:text-xl">
+                    <h3 className="text-card-title">
                       {feature.title}
                     </h3>
-                    <p className="portfolio-description">
+                    <p className="text-card-description">
                       {feature.description}
                     </p>
                   </div>
@@ -143,7 +143,7 @@ export default function MobileDemo() {
               <Palette className="w-4 h-4 sm:w-5 sm:h-5" />
               Component Preview
             </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-blue-600 via-blue-700 to-cyan-600 bg-clip-text text-transparent mb-4 sm:mb-6 leading-tight tracking-tight">
+            <h2 className="text-hero-title bg-gradient-to-r from-blue-600 via-blue-700 to-cyan-600 bg-clip-text text-transparent mb-4 sm:mb-6">
               Komponen Unggulan
             </h2>
             <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
@@ -178,17 +178,17 @@ export default function MobileDemo() {
                 gradient: "from-cyan-500 to-blue-500",
               }
             ].map((card, index) => (
-              <div key={index} className="portfolio-card google-fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
+              <div key={index} className="card-consistent google-fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
                 <div className="flex items-center gap-3 mb-4">
                   <div className={`w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br ${card.gradient} rounded-2xl flex items-center justify-center shadow-lg`}>
                     {card.icon}
                   </div>
                   <div className="min-w-0 flex-1">
-                    <h4 className="portfolio-title text-base sm:text-lg mb-1">{card.title}</h4>
+                    <h4 className="text-card-title mb-1">{card.title}</h4>
                     <p className="text-xs sm:text-sm text-muted-foreground">{card.subtitle}</p>
                   </div>
                 </div>
-                <p className="portfolio-description mb-4 sm:mb-6">
+                <p className="text-card-description mb-4 sm:mb-6">
                   {card.description}
                 </p>
                 <button className={`w-full py-2 sm:py-3 px-3 sm:px-4 bg-gradient-to-r ${card.gradient} text-white font-medium rounded-xl hover:shadow-lg transition-all duration-200 text-sm sm:text-base`}>

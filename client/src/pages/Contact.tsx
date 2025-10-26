@@ -58,7 +58,7 @@ export default function Contact() {
               Hubungi Kami
             </div>
             
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold bg-gradient-to-r from-blue-600 via-blue-700 to-cyan-600 bg-clip-text text-transparent mb-6 sm:mb-8 leading-tight tracking-tight">
+            <h1 className="text-hero-title bg-gradient-to-r from-blue-600 via-blue-700 to-cyan-600 bg-clip-text text-transparent mb-6 sm:mb-8">
               Mari Diskusikan{" "}
               <span className="bg-gradient-to-r from-cyan-500 to-blue-500 bg-clip-text text-transparent">Proyek Anda</span>
             </h1>
@@ -72,7 +72,7 @@ export default function Contact() {
                 href="https://wa.me/62895406181407?text=Halo%20Hadi%20Origin%2C%20saya%20ingin%20berkonsultasi%20tentang%20project%20saya" 
                 target="_blank"
                 rel="noopener noreferrer"
-                className="portfolio-button primary inline-flex items-center justify-center gap-3 px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700"
+                className="btn-primary-consistent bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700"
               >
                 <MessageCircle className="w-5 h-5" />
                 <span>WhatsApp</span>
@@ -80,7 +80,7 @@ export default function Contact() {
               </a>
               <a 
                 href="#contact-form" 
-                className="portfolio-button secondary inline-flex items-center justify-center gap-3 px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg"
+                className="btn-secondary-consistent"
               >
                 <span>Kirim Pesan</span>
                 <ArrowRight className="w-5 h-5" />
@@ -101,7 +101,7 @@ export default function Contact() {
             {/* Contact Info */}
             <div className="lg:col-span-1 space-y-6">
               <div className="google-fade-in">
-                <h2 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-blue-600 via-blue-700 to-cyan-600 bg-clip-text text-transparent mb-6 sm:mb-8">
+                <h2 className="text-section-title bg-gradient-to-r from-blue-600 via-blue-700 to-cyan-600 bg-clip-text text-transparent mb-6 sm:mb-8">
                   Informasi Kontak
                 </h2>
                 
@@ -141,16 +141,16 @@ export default function Contact() {
                       gradient: "from-cyan-500 to-blue-500"
                     }
                   ].map((contact, index) => (
-                    <div key={index} className="portfolio-card">
+                    <div key={index} className="card-consistent">
                       <div className="flex items-start gap-3 sm:gap-4">
                         <div className={`p-2 sm:p-3 bg-gradient-to-br ${contact.gradient} rounded-xl shadow-lg flex-shrink-0`}>
                           {contact.icon}
                         </div>
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center gap-2 mb-1 sm:mb-2">
-                            <h3 className="text-base sm:text-lg font-bold text-foreground">{contact.title}</h3>
+                            <h3 className="text-card-title">{contact.title}</h3>
                             {contact.primary && (
-                              <Badge className="bg-green-100 text-green-700 text-xs">Recommended</Badge>
+                              <Badge className="badge-consistent badge-primary-consistent text-xs">Recommended</Badge>
                             )}
                           </div>
                           {contact.href ? (
@@ -158,12 +158,12 @@ export default function Contact() {
                               href={contact.href} 
                               target={contact.href.startsWith('http') ? '_blank' : undefined} 
                               rel={contact.href.startsWith('http') ? 'noopener noreferrer' : undefined} 
-                              className="text-sm sm:text-base font-medium text-foreground hover:text-primary transition-colors leading-relaxed block mb-1 break-all"
+                              className="text-card-description hover:text-primary transition-colors leading-relaxed block mb-1 break-all"
                             >
                               {contact.content}
                             </a>
                           ) : (
-                            <p className="text-sm sm:text-base font-medium text-foreground leading-relaxed mb-1">
+                            <p className="text-card-description leading-relaxed mb-1">
                               {contact.content}
                             </p>
                           )}
@@ -178,8 +178,8 @@ export default function Contact() {
 
             {/* Contact Form */}
             <div className="lg:col-span-2">
-              <div className="portfolio-card google-fade-in" style={{ animationDelay: "0.1s" }}>
-                <h2 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-cyan-500 via-blue-600 to-blue-700 bg-clip-text text-transparent mb-6 sm:mb-8">
+              <div className="card-consistent google-fade-in" style={{ animationDelay: "0.1s" }}>
+                <h2 className="text-section-title bg-gradient-to-r from-cyan-500 via-blue-600 to-blue-700 bg-clip-text text-transparent mb-6 sm:mb-8">
                   Kirim Pesan
                 </h2>
               

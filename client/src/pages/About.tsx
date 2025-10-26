@@ -21,7 +21,7 @@ export default function About() {
               Tentang Kami
             </div>
             
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold bg-gradient-to-r from-blue-600 via-blue-700 to-cyan-600 bg-clip-text text-transparent mb-6 sm:mb-8 leading-tight tracking-tight">
+            <h1 className="text-hero-title bg-gradient-to-r from-blue-600 via-blue-700 to-cyan-600 bg-clip-text text-transparent mb-6 sm:mb-8">
               Membangun Solusi{" "}
               <span className="bg-gradient-to-r from-cyan-500 to-blue-500 bg-clip-text text-transparent">Web & Mobile</span>
               <br className="hidden sm:block" />
@@ -35,7 +35,7 @@ export default function About() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a 
                 href="/contact" 
-                className="portfolio-button primary inline-flex items-center justify-center gap-3 px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg"
+                className="btn-primary-consistent"
               >
                 <MessageCircle className="w-5 h-5" />
                 <span>Hubungi Kami</span>
@@ -43,7 +43,7 @@ export default function About() {
               </a>
               <a 
                 href="/#portfolio" 
-                className="portfolio-button secondary inline-flex items-center justify-center gap-3 px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg"
+                className="btn-secondary-consistent"
               >
                 <span>Lihat Portfolio</span>
                 <ArrowRight className="w-5 h-5" />
@@ -61,13 +61,13 @@ export default function About() {
         
         <div className="container-responsive relative">
           <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
-            <div className="portfolio-card google-fade-in">
+            <div className="card-consistent google-fade-in">
               <div className="space-y-6">
                 <div className="inline-flex p-4 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl shadow-lg">
                   <Target className="w-8 h-8 text-white" />
                 </div>
-                <h2 className="portfolio-title text-2xl sm:text-3xl">Misi Kami</h2>
-                <p className="portfolio-description">
+                <h2 className="text-section-title">Misi Kami</h2>
+                <p className="text-card-description">
                   Memberdayakan bisnis dengan solusi <strong>web development</strong> dan <strong>mobile app development</strong> yang inovatif dan user-friendly. 
                   Kami berkomitmen menghadirkan website responsif dan aplikasi mobile yang tidak hanya modern, 
                   tetapi juga fungsional dan memberikan ROI yang nyata bagi bisnis klien.
@@ -75,13 +75,13 @@ export default function About() {
               </div>
             </div>
 
-            <div className="portfolio-card google-fade-in" style={{ animationDelay: "0.1s" }}>
+            <div className="card-consistent google-fade-in" style={{ animationDelay: "0.1s" }}>
               <div className="space-y-6">
                 <div className="inline-flex p-4 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-2xl shadow-lg">
                   <Lightbulb className="w-8 h-8 text-white" />
                 </div>
-                <h2 className="portfolio-title text-2xl sm:text-3xl">Visi Kami</h2>
-                <p className="portfolio-description">
+                <h2 className="text-section-title">Visi Kami</h2>
+                <p className="text-card-description">
                   Menjadi partner teknologi terpercaya yang membantu perusahaan Indonesia 
                   berkembang melalui solusi <strong>web development</strong> dan <strong>mobile app development</strong>. Kami ingin setiap bisnis, besar atau kecil, 
                   dapat memiliki website yang powerful dan aplikasi mobile yang mendukung growth bisnis mereka.
@@ -104,7 +104,7 @@ export default function About() {
               <Award className="w-4 h-4 sm:w-5 sm:h-5" />
               Nilai-Nilai Kami
             </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-blue-600 via-blue-700 to-cyan-600 bg-clip-text text-transparent mb-4 sm:mb-6 leading-tight tracking-tight">
+            <h2 className="text-hero-title bg-gradient-to-r from-blue-600 via-blue-700 to-cyan-600 bg-clip-text text-transparent mb-4 sm:mb-6">
               Prinsip Kami
             </h2>
             <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
@@ -133,13 +133,13 @@ export default function About() {
                 gradient: "from-cyan-500 to-blue-500"
               }
             ].map((value, index) => (
-              <div key={index} className="portfolio-card google-fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
+              <div key={index} className="card-consistent google-fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
                 <div className="space-y-4 sm:space-y-6">
                   <div className={`inline-flex p-3 sm:p-4 bg-gradient-to-br ${value.gradient} rounded-2xl shadow-lg`}>
                     <value.icon className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
                   </div>
-                  <h3 className="portfolio-title text-xl sm:text-2xl">{value.title}</h3>
-                  <p className="portfolio-description">
+                  <h3 className="text-card-title">{value.title}</h3>
+                  <p className="text-card-description">
                     {value.description}
                   </p>
                 </div>

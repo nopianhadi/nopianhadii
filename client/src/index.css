@@ -12,6 +12,22 @@
 @import './styles/mobile-hero-fix.css';
 /* Import mobile optimizations */
 @import './styles/mobile-optimizations.css';
+/* Import mobile app standard (FINAL OVERRIDE) */
+@import './styles/mobile-app-standard.css';
+/* Import mobile ultra compact layout (LAYOUT OPTIMIZATIONS) */
+@import './styles/mobile-ultra-compact-layout.css';
+/* Import mobile layout fixes (POSITIONING FIXES) */
+@import './styles/mobile-layout-fixes.css';
+/* Import mobile safe area (EDGE SPACING) */
+@import './styles/mobile-safe-area.css';
+/* Import desktop fixes (DESKTOP OPTIMIZATIONS) */
+@import './styles/desktop-fixes.css';
+/* Import desktop components (DESKTOP COMPONENT STYLES) */
+@import './styles/desktop-components.css';
+/* Import desktop layout (DESKTOP LAYOUT SYSTEM) */
+@import './styles/desktop-layout.css';
+/* Import responsive improvements (RESPONSIVE SYSTEM) */
+@import './styles/responsive-improvements.css';
 
 @tailwind base;
 @tailwind components;
@@ -103,6 +119,36 @@
   /* Backgrounds applied on top of other backgrounds when hovered/active */
   --elevate-1: rgba(255, 255, 255, .04);
   --elevate-2: rgba(255, 255, 255, .09);
+  
+  /* Dark mode adjustments for consistent classes */
+}
+
+.dark .btn-primary-consistent {
+  background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary) / 0.9));
+  border-color: hsl(var(--primary));
+}
+
+.dark .btn-secondary-consistent {
+  background: hsl(var(--secondary));
+  border-color: hsl(var(--border));
+}
+
+.dark .card-consistent {
+  background: hsl(var(--card));
+  border-color: hsl(var(--card-border));
+}
+
+.dark .badge-consistent {
+  background: hsl(var(--secondary));
+  color: hsl(var(--secondary-foreground));
+  border-color: hsl(var(--border));
+}
+
+.dark .badge-primary-consistent {
+  background: hsl(var(--primary) / 0.2);
+  color: hsl(var(--primary));
+  border-color: hsl(var(--primary) / 0.3);
+}
 
   /* Modern dark theme with purple-blue accents */
   --background: 240 15% 8%;
@@ -222,17 +268,66 @@
   padding: 0 1rem;
 }
 
+/* CONSISTENT RESPONSIVE BREAKPOINTS */
 @media (min-width: 640px) {
   .container-responsive,
-  .google-container {
+  .google-container,
+  .container-padding-consistent {
     padding: 0 1.5rem;
+  }
+  
+  .section-padding-consistent {
+    padding: 5rem 0;
+  }
+  
+  .text-hero-title {
+    font-size: 2.5rem;
+  }
+  
+  .text-section-title {
+    font-size: 2rem;
+  }
+  
+  .btn-primary-consistent,
+  .btn-secondary-consistent {
+    padding: 0.875rem 1.75rem;
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .text-hero-title {
+    font-size: 3rem;
+  }
+  
+  .text-section-title {
+    font-size: 2.25rem;
   }
 }
 
 @media (min-width: 1024px) {
   .container-responsive,
-  .google-container {
+  .google-container,
+  .container-padding-consistent {
     padding: 0 2rem;
+  }
+  
+  .section-padding-consistent {
+    padding: 6rem 0;
+  }
+  
+  .text-hero-title {
+    font-size: 4rem;
+  }
+  
+  .text-section-title {
+    font-size: 3rem;
+  }
+  
+  .btn-primary-consistent,
+  .btn-secondary-consistent {
+    padding: 1rem 2rem;
+    font-size: 1.125rem;
   }
 }
 
@@ -279,10 +374,31 @@
 
 /* COMPACT RESPONSIVE TYPOGRAPHY */
 
-/* Base mobile-first typography (ultra compact) */
+/* Consistent Typography Hierarchy */
 .text-hero-title {
   font-size: 1.875rem; /* 30px - ultra compact for mobile */
   line-height: 1.1;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.text-section-title {
+  font-size: 1.5rem; /* 24px */
+  line-height: 1.2;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.text-card-title {
+  font-size: 1.125rem; /* 18px */
+  line-height: 1.3;
+  font-weight: 600;
+}
+
+.text-card-description {
+  font-size: 0.875rem; /* 14px */
+  line-height: 1.5;
+  color: hsl(var(--muted-foreground));
 }
 
 /* Small mobile (480px+) */
@@ -550,6 +666,101 @@
   }
 }
 
+/* CONSISTENT UI COMPONENTS */
+
+/* Standardized Button Classes */
+.btn-primary-consistent {
+  background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary) / 0.9));
+  color: hsl(var(--primary-foreground));
+  border: 1px solid hsl(var(--primary));
+  border-radius: 0.75rem;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn-primary-consistent:hover {
+  background: linear-gradient(135deg, hsl(var(--primary) / 0.9), hsl(var(--primary) / 0.8));
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px -5px hsl(var(--primary) / 0.3);
+}
+
+.btn-secondary-consistent {
+  background: hsl(var(--secondary));
+  color: hsl(var(--secondary-foreground));
+  border: 1px solid hsl(var(--border));
+  border-radius: 0.75rem;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn-secondary-consistent:hover {
+  background: hsl(var(--accent));
+  color: hsl(var(--accent-foreground));
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px -2px hsl(var(--border));
+}
+
+/* Standardized Card Classes */
+.card-consistent {
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--card-border));
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px -2px hsl(var(--border));
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-consistent:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px -5px hsl(var(--border));
+  border-color: hsl(var(--primary) / 0.2);
+}
+
+/* Standardized Badge Classes */
+.badge-consistent {
+  background: hsl(var(--secondary));
+  color: hsl(var(--secondary-foreground));
+  border: 1px solid hsl(var(--border));
+  border-radius: 0.5rem;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.badge-primary-consistent {
+  background: hsl(var(--primary) / 0.1);
+  color: hsl(var(--primary));
+  border-color: hsl(var(--primary) / 0.2);
+}
+
+/* Consistent Spacing Classes */
+.section-padding-consistent {
+  padding: 4rem 0;
+}
+
+.container-padding-consistent {
+  padding: 0 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
 /* Performance optimizations */
 .will-change-transform {
   will-change: transform;
@@ -571,6 +782,93 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+}
+
+/* MOBILE RESPONSIVE IMPROVEMENTS FOR CONSISTENT CLASSES */
+
+@media (max-width: 767px) {
+  .btn-primary-consistent,
+  .btn-secondary-consistent {
+    padding: 0.5rem 1rem;
+    font-size: 0.75rem;
+    border-radius: 0.5rem;
+  }
+  
+  .card-consistent {
+    padding: 1rem;
+    border-radius: 0.75rem;
+  }
+  
+  .text-hero-title {
+    font-size: 1.875rem;
+  }
+  
+  .text-section-title {
+    font-size: 1.25rem;
+  }
+  
+  .text-card-title {
+    font-size: 1rem;
+  }
+  
+  .text-card-description {
+    font-size: 0.8125rem;
+  }
+  
+  .badge-consistent {
+    padding: 0.125rem 0.5rem;
+    font-size: 0.6875rem;
+  }
+  
+  .section-padding-consistent {
+    padding: 2rem 0;
+  }
+  
+  .container-padding-consistent {
+    padding: 0 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .btn-primary-consistent,
+  .btn-secondary-consistent {
+    padding: 0.375rem 0.75rem;
+    font-size: 0.6875rem;
+  }
+  
+  .card-consistent {
+    padding: 0.75rem;
+    border-radius: 0.625rem;
+  }
+  
+  .text-hero-title {
+    font-size: 1.625rem;
+  }
+  
+  .text-section-title {
+    font-size: 1.125rem;
+  }
+  
+  .text-card-title {
+    font-size: 0.875rem;
+  }
+  
+  .text-card-description {
+    font-size: 0.75rem;
+  }
+  
+  .badge-consistent {
+    padding: 0.09375rem 0.375rem;
+    font-size: 0.625rem;
+  }
+  
+  .section-padding-consistent {
+    padding: 1.5rem 0;
+  }
+  
+  .container-padding-consistent {
+    padding: 0 0.5rem;
   }
 }
 

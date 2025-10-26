@@ -188,7 +188,7 @@ export default function ProjectGallery() {
               Project Gallery
             </div>
             
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold bg-gradient-to-r from-blue-600 via-blue-700 to-cyan-600 bg-clip-text text-transparent mb-6 sm:mb-8 leading-tight tracking-tight">
+            <h1 className="text-hero-title bg-gradient-to-r from-blue-600 via-blue-700 to-cyan-600 bg-clip-text text-transparent mb-6 sm:mb-8">
               Galeri Portfolio
             </h1>
             
@@ -230,7 +230,7 @@ export default function ProjectGallery() {
                   description: "Tingkat Keberhasilan"
                 }
               ].map((stat, index) => (
-                <div key={index} className="portfolio-card text-center google-fade-in p-3 sm:p-4" style={{ animationDelay: `${index * 0.1}s` }}>
+                <div key={index} className="card-consistent text-center google-fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
                   <div className={`inline-flex p-2 sm:p-3 bg-gradient-to-r ${stat.gradient} rounded-lg sm:rounded-xl shadow-lg mb-2 sm:mb-3`}>
                     <stat.icon className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-white" />
                   </div>
@@ -261,7 +261,7 @@ export default function ProjectGallery() {
               <Code className="w-4 h-4 sm:w-5 sm:h-5" />
               All Projects
             </div>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-blue-600 via-blue-700 to-cyan-600 bg-clip-text text-transparent mb-4 sm:mb-6 leading-tight tracking-tight">
+            <h2 className="text-hero-title bg-gradient-to-r from-blue-600 via-blue-700 to-cyan-600 bg-clip-text text-transparent mb-4 sm:mb-6">
               Semua Proyek
             </h2>
             <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed mb-8 sm:mb-12">
@@ -338,7 +338,7 @@ export default function ProjectGallery() {
               {filteredProjects.map((project, index) => (
                 <div 
                   key={project.id}
-                  className="portfolio-card cursor-pointer google-fade-in group"
+                  className="card-consistent cursor-pointer google-fade-in group"
                   style={{ animationDelay: `${index * 0.1}s` }}
                   onClick={() => handleProjectClick(project.id)}
                 >
@@ -401,22 +401,22 @@ export default function ProjectGallery() {
 
                   {/* Project Content */}
                   <div className="p-4 sm:p-6">
-                    <h3 className="portfolio-title text-lg sm:text-xl mb-2 sm:mb-3">
+                    <h3 className="text-card-title mb-2 sm:mb-3">
                       {project.title}
                     </h3>
-                    <p className="portfolio-description mb-3 sm:mb-4 line-clamp-2">
+                    <p className="text-card-description mb-3 sm:mb-4 line-clamp-2">
                       {project.description}
                     </p>
 
                     {/* Tech Stack */}
                     <div className="flex flex-wrap gap-1 sm:gap-2 mb-3 sm:mb-4">
                       {(Array.isArray(project.techStack) ? project.techStack : []).slice(0, 3).map((tech: string) => (
-                        <Badge key={tech} className="tech-badge">
+                        <Badge key={tech} className="badge-consistent">
                           {tech}
                         </Badge>
                       ))}
                       {(Array.isArray(project.techStack) ? project.techStack : []).length > 3 && (
-                        <Badge className="tech-badge secondary">
+                        <Badge className="badge-consistent">
                           +{(Array.isArray(project.techStack) ? project.techStack : []).length - 3}
                         </Badge>
                       )}
