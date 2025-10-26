@@ -199,7 +199,7 @@ export default function ProjectGallery() {
             </p>
 
             {/* Enhanced Stats Cards */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 max-w-4xl mx-auto mb-8 sm:mb-12">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 md:gap-6 max-w-4xl mx-auto mb-6 sm:mb-8 md:mb-12 px-2 sm:px-0">
               {[
                 { 
                   value: displayProjects?.length || 0, 
@@ -230,14 +230,14 @@ export default function ProjectGallery() {
                   description: "Tingkat Keberhasilan"
                 }
               ].map((stat, index) => (
-                <div key={index} className="portfolio-card text-center google-fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
-                  <div className={`inline-flex p-3 bg-gradient-to-r ${stat.gradient} rounded-xl shadow-lg mb-3`}>
-                    <stat.icon className="w-6 h-6 text-white" />
+                <div key={index} className="portfolio-card text-center google-fade-in p-3 sm:p-4" style={{ animationDelay: `${index * 0.1}s` }}>
+                  <div className={`inline-flex p-2 sm:p-3 bg-gradient-to-r ${stat.gradient} rounded-lg sm:rounded-xl shadow-lg mb-2 sm:mb-3`}>
+                    <stat.icon className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-white" />
                   </div>
-                  <div className={`text-2xl sm:text-3xl font-bold bg-gradient-to-r ${stat.gradient} bg-clip-text text-transparent mb-1`}>
+                  <div className={`text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold bg-gradient-to-r ${stat.gradient} bg-clip-text text-transparent mb-1`}>
                     {stat.value}
                   </div>
-                  <div className="text-sm font-medium text-foreground mb-1">
+                  <div className="text-xs sm:text-sm font-medium text-foreground mb-1">
                     {stat.label}
                   </div>
                   <div className="text-xs text-muted-foreground">

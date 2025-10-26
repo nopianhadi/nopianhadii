@@ -1,11 +1,15 @@
 /* Fonts are now loaded in HTML head for better performance */
 
+/* Import portfolio animations */
+@import './styles/portfolio-animations.css';
+/* Import utility classes */
+@import './styles/utilities.css';
+/* Import component styles */
+@import './styles/components.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/* Import portfolio animations */
-@import './styles/portfolio-animations.css';
 
 /* GOOGLE AI STUDIO INSPIRED - Clean White Theme */
 :root {
@@ -203,6 +207,343 @@
   }
 }
 
+/* Container Responsive */
+.container-responsive,
+.google-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+@media (min-width: 640px) {
+  .container-responsive,
+  .google-container {
+    padding: 0 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-responsive,
+  .google-container {
+    padding: 0 2rem;
+  }
+}
+
+.container-mobile {
+  padding: 0 1rem;
+}
+
+@media (min-width: 640px) {
+  .container-mobile {
+    padding: 0 1.5rem;
+  }
+}
+
+/* Google-style animations */
+.google-fade-in {
+  animation: googleFadeIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+.google-slide-up {
+  animation: googleSlideUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+@keyframes googleFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes googleSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* COMPACT RESPONSIVE TYPOGRAPHY */
+
+/* Base mobile-first typography (ultra compact) */
+.text-hero-title {
+  font-size: 1.875rem; /* 30px - ultra compact for mobile */
+  line-height: 1.1;
+}
+
+/* Small mobile (480px+) */
+@media (min-width: 480px) {
+  .text-hero-title {
+    font-size: 2.125rem; /* 34px */
+  }
+}
+
+/* Large mobile (640px+) */
+@media (min-width: 640px) {
+  .text-hero-title {
+    font-size: 2.5rem; /* 40px */
+  }
+}
+
+/* iPad (768px+) */
+@media (min-width: 768px) {
+  .text-hero-title {
+    font-size: 3rem; /* 48px - compact for iPad */
+  }
+}
+
+/* Desktop (1024px+) */
+@media (min-width: 1024px) {
+  .text-hero-title {
+    font-size: 4.5rem; /* 72px - full size for desktop */
+  }
+}
+
+.text-hero-subtitle {
+  font-size: 0.875rem; /* 14px - ultra compact for mobile */
+  line-height: 1.4;
+}
+
+@media (min-width: 480px) {
+  .text-hero-subtitle {
+    font-size: 0.9375rem; /* 15px */
+  }
+}
+
+@media (min-width: 640px) {
+  .text-hero-subtitle {
+    font-size: 1rem; /* 16px */
+  }
+}
+
+@media (min-width: 768px) {
+  .text-hero-subtitle {
+    font-size: 1.125rem; /* 18px - compact for iPad */
+  }
+}
+
+@media (min-width: 1024px) {
+  .text-hero-subtitle {
+    font-size: 1.25rem; /* 20px - full size for desktop */
+  }
+}
+
+.text-badge-md {
+  font-size: 0.75rem; /* 12px - ultra compact for mobile */
+}
+
+@media (min-width: 640px) {
+  .text-badge-md {
+    font-size: 0.875rem; /* 14px */
+  }
+}
+
+@media (min-width: 1024px) {
+  .text-badge-md {
+    font-size: 1rem; /* 16px - full size for desktop */
+  }
+}
+
+.text-button-lg {
+  font-size: 0.75rem; /* 12px - ultra compact for mobile */
+}
+
+@media (min-width: 640px) {
+  .text-button-lg {
+    font-size: 0.875rem; /* 14px */
+  }
+}
+
+@media (min-width: 1024px) {
+  .text-button-lg {
+    font-size: 1rem; /* 16px - full size for desktop */
+  }
+}
+
+/* Responsive Font Weights */
+.font-bold-responsive {
+  font-weight: 700;
+}
+
+@media (min-width: 768px) {
+  .font-bold-responsive {
+    font-weight: 800;
+  }
+}
+
+.font-medium-responsive {
+  font-weight: 500;
+}
+
+.font-semibold-responsive {
+  font-weight: 600;
+}
+
+/* COMPACT RESPONSIVE SPACING */
+
+/* Ultra compact spacing for mobile */
+.gap-responsive-sm {
+  gap: 0.5rem; /* 8px - ultra compact */
+}
+
+@media (min-width: 480px) {
+  .gap-responsive-sm {
+    gap: 0.625rem; /* 10px */
+  }
+}
+
+@media (min-width: 640px) {
+  .gap-responsive-sm {
+    gap: 0.75rem; /* 12px */
+  }
+}
+
+@media (min-width: 1024px) {
+  .gap-responsive-sm {
+    gap: 1rem; /* 16px - full size for desktop */
+  }
+}
+
+.gap-responsive-lg {
+  gap: 1rem; /* 16px - ultra compact for mobile */
+}
+
+@media (min-width: 480px) {
+  .gap-responsive-lg {
+    gap: 1.25rem; /* 20px */
+  }
+}
+
+@media (min-width: 640px) {
+  .gap-responsive-lg {
+    gap: 1.5rem; /* 24px */
+  }
+}
+
+@media (min-width: 768px) {
+  .gap-responsive-lg {
+    gap: 2rem; /* 32px - compact for iPad */
+  }
+}
+
+@media (min-width: 1024px) {
+  .gap-responsive-lg {
+    gap: 4rem; /* 64px - full size for desktop */
+  }
+}
+
+.element-spacing-sm {
+  margin-bottom: 0.5rem;
+}
+
+.element-spacing-md {
+  margin-bottom: 1rem;
+}
+
+.element-spacing-lg {
+  margin-bottom: 1.5rem;
+}
+
+/* COMPACT RESPONSIVE ICONS */
+
+/* Ultra compact icons for mobile */
+.icon-mobile-sm {
+  width: 0.875rem; /* 14px - ultra compact */
+  height: 0.875rem;
+}
+
+@media (min-width: 480px) {
+  .icon-mobile-sm {
+    width: 0.9375rem; /* 15px */
+    height: 0.9375rem;
+  }
+}
+
+@media (min-width: 640px) {
+  .icon-mobile-sm {
+    width: 1rem; /* 16px */
+    height: 1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .icon-mobile-sm {
+    width: 1.25rem; /* 20px - full size for desktop */
+    height: 1.25rem;
+  }
+}
+
+.icon-mobile-md {
+  width: 1rem; /* 16px - ultra compact */
+  height: 1rem;
+}
+
+@media (min-width: 480px) {
+  .icon-mobile-md {
+    width: 1.125rem; /* 18px */
+    height: 1.125rem;
+  }
+}
+
+@media (min-width: 640px) {
+  .icon-mobile-md {
+    width: 1.25rem; /* 20px */
+    height: 1.25rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .icon-mobile-md {
+    width: 1.5rem; /* 24px - full size for desktop */
+    height: 1.5rem;
+  }
+}
+
+/* Touch Target */
+.tap-target {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* COMPACT SECTION SPACING */
+
+/* Ultra compact section spacing for mobile */
+.section-spacing-lg {
+  padding: 1.5rem 0; /* 24px - ultra compact */
+}
+
+@media (min-width: 480px) {
+  .section-spacing-lg {
+    padding: 2rem 0; /* 32px */
+  }
+}
+
+@media (min-width: 640px) {
+  .section-spacing-lg {
+    padding: 2.5rem 0; /* 40px */
+  }
+}
+
+@media (min-width: 768px) {
+  .section-spacing-lg {
+    padding: 3rem 0; /* 48px - compact for iPad */
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-spacing-lg {
+    padding: 6rem 0; /* 96px - full size for desktop */
+  }
+}
+
 /* Performance optimizations */
 .will-change-transform {
   will-change: transform;
@@ -224,5 +565,386 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+}
+
+/* COMPACT MOBILE & TABLET DESIGN - Ultra Compact for iPhone & iPad */
+
+/* iPad Compact Design (768px - 1024px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  /* Container padding lebih kecil */
+  .container-responsive,
+  .google-container {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  /* Section spacing lebih kecil */
+  .section-spacing-lg {
+    padding: 2.5rem 0 !important;
+  }
+
+  /* Typography lebih kecil */
+  .text-hero-title {
+    font-size: 2.75rem !important;
+    line-height: 1.1 !important;
+  }
+
+  .text-hero-subtitle {
+    font-size: 1rem !important;
+    line-height: 1.5 !important;
+  }
+
+  /* Card padding lebih kecil */
+  .portfolio-card {
+    padding: 0.875rem !important;
+    margin: 0.5rem 0 !important;
+    border-radius: 0.625rem !important;
+  }
+
+  /* Text dalam card lebih kecil */
+  .portfolio-title {
+    font-size: 0.9375rem !important;
+    line-height: 1.3 !important;
+    margin-bottom: 0.375rem !important;
+  }
+
+  .portfolio-description {
+    font-size: 0.8125rem !important;
+    line-height: 1.4 !important;
+    margin-bottom: 0.625rem !important;
+  }
+
+  /* Button lebih kecil */
+  .portfolio-button {
+    padding: 0.4375rem 0.6875rem !important;
+    font-size: 0.8125rem !important;
+    min-height: 36px !important;
+  }
+
+  /* Badge lebih kecil */
+  .tech-badge {
+    padding: 0.1875rem 0.4375rem !important;
+    font-size: 0.6875rem !important;
+    margin: 0.09375rem !important;
+  }
+
+  /* Icon lebih kecil */
+  .lucide {
+    width: 0.9375rem !important;
+    height: 0.9375rem !important;
+  }
+
+  /* Grid gap lebih kecil */
+  .responsive-grid {
+    gap: 0.875rem !important;
+  }
+
+  /* Stats card lebih kecil */
+  .stats-card {
+    padding: 0.875rem !important;
+    margin: 0.375rem 0 !important;
+  }
+
+  .stats-card .text-2xl,
+  .stats-card .text-3xl {
+    font-size: 1.375rem !important;
+  }
+
+  .stats-card .text-sm {
+    font-size: 0.6875rem !important;
+  }
+
+  /* Feature card lebih kecil */
+  .feature-card {
+    padding: 0.875rem !important;
+    margin: 0.375rem 0 !important;
+  }
+
+  .feature-card h3 {
+    font-size: 0.9375rem !important;
+    margin-bottom: 0.375rem !important;
+  }
+
+  .feature-card p {
+    font-size: 0.8125rem !important;
+    line-height: 1.3 !important;
+  }
+
+  /* Headings iPad */
+  h1 {
+    font-size: 1.75rem !important;
+    line-height: 1.2 !important;
+    margin-bottom: 0.875rem !important;
+  }
+
+  h2 {
+    font-size: 1.5rem !important;
+    line-height: 1.2 !important;
+    margin-bottom: 0.75rem !important;
+  }
+
+  h3 {
+    font-size: 1.125rem !important;
+    line-height: 1.3 !important;
+    margin-bottom: 0.625rem !important;
+  }
+
+  /* Paragraph iPad */
+  p {
+    font-size: 0.875rem !important;
+    line-height: 1.4 !important;
+    margin-bottom: 0.875rem !important;
+  }
+}
+
+/* Mobile Compact Design (max-width: 767px) */
+@media (max-width: 767px) {
+  /* Container margins ultra kecil */
+  .container-responsive,
+  .google-container {
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Section spacing ultra kecil */
+  .section-spacing-lg {
+    padding: 2rem 0 !important;
+  }
+
+  /* Hero typography ultra kecil */
+  .text-hero-title {
+    font-size: 1.875rem !important;
+    line-height: 1.1 !important;
+    margin-bottom: 0.75rem !important;
+  }
+
+  .text-hero-subtitle {
+    font-size: 0.875rem !important;
+    line-height: 1.4 !important;
+    margin-bottom: 1rem !important;
+  }
+
+  /* Card ultra kompak */
+  .portfolio-card {
+    margin: 0.375rem 0 !important;
+    padding: 0.75rem !important;
+    border-radius: 0.5rem !important;
+  }
+
+  /* Text sizing ultra kecil */
+  .portfolio-title {
+    font-size: 0.8125rem !important;
+    line-height: 1.3 !important;
+    margin-bottom: 0.3125rem !important;
+  }
+
+  .portfolio-description {
+    font-size: 0.75rem !important;
+    line-height: 1.4 !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  /* Button ultra kecil */
+  .portfolio-button {
+    padding: 0.375rem 0.5625rem !important;
+    font-size: 0.75rem !important;
+    min-height: 32px !important;
+  }
+
+  /* Tech badge ultra kecil */
+  .tech-badge {
+    padding: 0.125rem 0.3125rem !important;
+    font-size: 0.625rem !important;
+    margin: 0.0625rem !important;
+  }
+
+  /* Icon ultra kecil */
+  .lucide {
+    width: 0.875rem !important;
+    height: 0.875rem !important;
+  }
+
+  /* Hero section ultra kecil */
+  .hero-section h1 {
+    font-size: 1.875rem !important;
+    line-height: 1.1 !important;
+    margin-bottom: 0.75rem !important;
+  }
+
+  .hero-section p {
+    font-size: 0.875rem !important;
+    line-height: 1.4 !important;
+    margin-bottom: 1rem !important;
+  }
+
+  /* Stats cards ultra kecil */
+  .stats-card {
+    padding: 0.75rem !important;
+    margin: 0.3125rem 0 !important;
+  }
+
+  .stats-card .text-2xl,
+  .stats-card .text-3xl {
+    font-size: 1.25rem !important;
+  }
+
+  .stats-card .text-sm {
+    font-size: 0.625rem !important;
+  }
+
+  /* Grid spacing ultra kecil */
+  .responsive-grid {
+    gap: 0.75rem !important;
+    grid-template-columns: 1fr !important;
+    padding: 0 0.375rem !important;
+  }
+
+  /* Navigation ultra kecil */
+  .nav-link {
+    font-size: 0.75rem !important;
+    padding: 0.375rem 0.5625rem !important;
+  }
+
+  /* Feature cards ultra kecil */
+  .feature-card {
+    padding: 0.75rem !important;
+    margin: 0.3125rem 0 !important;
+  }
+
+  .feature-card h3 {
+    font-size: 0.8125rem !important;
+    margin-bottom: 0.3125rem !important;
+  }
+
+  .feature-card p {
+    font-size: 0.75rem !important;
+    line-height: 1.3 !important;
+  }
+
+  /* Headings ultra kecil */
+  h1 {
+    font-size: 1.5rem !important;
+    line-height: 1.2 !important;
+    margin-bottom: 0.75rem !important;
+  }
+
+  h2 {
+    font-size: 1.25rem !important;
+    line-height: 1.2 !important;
+    margin-bottom: 0.625rem !important;
+  }
+
+  h3 {
+    font-size: 1rem !important;
+    line-height: 1.3 !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  h4 {
+    font-size: 0.875rem !important;
+    line-height: 1.3 !important;
+    margin-bottom: 0.375rem !important;
+  }
+
+  /* Paragraph ultra kecil */
+  p {
+    font-size: 0.75rem !important;
+    line-height: 1.4 !important;
+    margin-bottom: 0.75rem !important;
+  }
+
+  /* Badge dan label ultra kecil */
+  .badge,
+  .text-badge-md {
+    font-size: 0.625rem !important;
+    padding: 0.125rem 0.3125rem !important;
+  }
+
+  /* Button text ultra kecil */
+  .text-button-lg {
+    font-size: 0.75rem !important;
+  }
+
+  /* Form elements ultra kecil */
+  input,
+  textarea,
+  select {
+    font-size: 0.75rem !important;
+    padding: 0.5rem !important;
+  }
+
+  label {
+    font-size: 0.75rem !important;
+    margin-bottom: 0.25rem !important;
+  }
+}
+
+/* Extra small mobile devices (iPhone SE, etc) */
+@media (max-width: 480px) {
+  .container-responsive,
+  .google-container {
+    padding-left: 0.625rem !important;
+    padding-right: 0.625rem !important;
+  }
+
+  .portfolio-card {
+    margin: 0.25rem 0 !important;
+    padding: 0.625rem !important;
+  }
+
+  .portfolio-title {
+    font-size: 0.75rem !important;
+  }
+
+  .portfolio-description {
+    font-size: 0.6875rem !important;
+  }
+
+  .tech-badge {
+    padding: 0.09375rem 0.25rem !important;
+    font-size: 0.5625rem !important;
+  }
+
+  .hero-section h1 {
+    font-size: 1.625rem !important;
+  }
+
+  .hero-section p {
+    font-size: 0.8125rem !important;
+  }
+
+  h1 {
+    font-size: 1.375rem !important;
+  }
+
+  h2 {
+    font-size: 1.125rem !important;
+  }
+
+  h3 {
+    font-size: 0.9375rem !important;
+  }
+
+  p {
+    font-size: 0.6875rem !important;
+  }
+
+  .portfolio-button {
+    padding: 0.3125rem 0.5rem !important;
+    font-size: 0.6875rem !important;
+    min-height: 28px !important;
+  }
+
+  .lucide {
+    width: 0.75rem !important;
+    height: 0.75rem !important;
+  }
+
+  .responsive-grid {
+    gap: 0.625rem !important;
+    padding: 0 0.25rem !important;
   }
 }

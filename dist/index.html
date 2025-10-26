@@ -2,17 +2,69 @@
 <html lang="id">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
-    <title>Hadi Origin - Build Smart Dashboards & Business Apps Powered by AI</title>
-    <meta name="description" content="Saya membantu bisnis membangun aplikasi dan dashboard profesional yang terintegrasi dengan kecerdasan buatan (AI). Dari sistem analitik, CRM, hingga platform otomasi internal." />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Hadi Origin - Digital Agency | Web Development & Mobile App Development</title>
+    <meta name="description" content="Digital agency profesional yang mengkhususkan diri dalam web development dan mobile app development. Kami membantu bisnis membangun website modern, e-commerce, dan aplikasi mobile yang user-friendly." />
+    
+    <!-- Performance optimizations -->
+    <meta name="theme-color" content="#3B82F6" />
+    <meta name="color-scheme" content="light dark" />
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Fira+Code:wght@300..700&display=swap" rel="stylesheet">
-    <script type="module" crossorigin src="/assets/index-B_63lpu-.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-Cm6VPLDs.css">
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Hadi Origin" />
+    
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://images.unsplash.com" />
+    <link rel="dns-prefetch" href="https://api.supabase.co" />
+    
+    <!-- Optimized font loading -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Google+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    
+    <!-- Critical CSS inline -->
+    <style>
+      /* Critical above-the-fold styles */
+      html { font-family: 'Inter', system-ui, sans-serif; }
+      body { margin: 0; background: #ffffff; color: #1f2937; }
+      #root { min-height: 100vh; }
+      .loading-screen { 
+        position: fixed; 
+        inset: 0; 
+        display: flex; 
+        align-items: center; 
+        justify-content: center; 
+        background: #ffffff; 
+        z-index: 9999;
+      }
+      .loading-spinner { 
+        width: 32px; 
+        height: 32px; 
+        border: 2px solid #e5e7eb; 
+        border-top: 2px solid #3b82f6; 
+        border-radius: 50%; 
+        animation: spin 1s linear infinite; 
+      }
+      @keyframes spin { to { transform: rotate(360deg); } }
+    </style>
+    <script type="module" crossorigin src="/assets/index-YLytk89X.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/vendor-tLwmaxXf.js">
+    <link rel="modulepreload" crossorigin href="/assets/ui-Cu4SrAoe.js">
+    <link rel="modulepreload" crossorigin href="/assets/supabase-DFn1UaO2.js">
+    <link rel="modulepreload" crossorigin href="/assets/router-BaRzAWL5.js">
+    <link rel="modulepreload" crossorigin href="/assets/query-DI_Q9A27.js">
+    <link rel="modulepreload" crossorigin href="/assets/icons-OQC1g2nN.js">
+    <link rel="stylesheet" crossorigin href="/assets/index-xYcM3YWA.css">
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <!-- Loading screen for instant feedback -->
+      <div class="loading-screen">
+        <div class="loading-spinner"></div>
+      </div>
+    </div>
   </body>
 </html>

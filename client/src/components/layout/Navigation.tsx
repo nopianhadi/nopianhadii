@@ -48,7 +48,7 @@ const Navigation = memo(function Navigation() {
               <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
                 <span className="text-primary-foreground font-medium text-sm" aria-hidden="true">HO</span>
               </div>
-              <span className="google-heading text-lg">
+              <span className="text-base sm:text-lg font-semibold">
                 Hadi Origin
               </span>
             </a>
@@ -121,18 +121,18 @@ const Navigation = memo(function Navigation() {
             aria-controls="mobile-menu"
             data-testid="button-menu-toggle"
           >
-            {mobileMenuOpen ? <X className="w-5 h-5" aria-hidden="true" /> : <Menu className="w-5 h-5" aria-hidden="true" />}
+            {mobileMenuOpen ? <X className="w-4 h-4 sm:w-5 sm:h-5" aria-hidden="true" /> : <Menu className="w-4 h-4 sm:w-5 sm:h-5" aria-hidden="true" />}
           </Button>
         </div>
 
         {mobileMenuOpen && (
-          <div id="mobile-menu" className="md:hidden py-4 border-t border-border/40 animate-slide-up bg-background/95 backdrop-blur-xl" role="menu">
+          <div id="mobile-menu" className="md:hidden py-3 px-4 border-t border-border/40 animate-slide-up bg-background/95 backdrop-blur-xl" role="menu">
             <div className="flex flex-col gap-1">
               {menuItems.map((item, index) => (
                 <a
                   key={item.label}
                   href={item.href}
-                  className={`flex items-center px-4 py-3 text-sm font-medium rounded-lg mx-2 transition-all duration-300 hover:translate-x-1 ${
+                  className={`flex items-center px-3 py-2.5 text-xs sm:text-sm font-medium rounded-lg mx-1 transition-all duration-300 hover:translate-x-1 ${
                     item.href.includes(activeSection)
                       ? 'text-primary bg-primary/10 font-semibold border-l-2 border-primary'
                       : 'text-foreground/80 hover:text-primary hover:bg-accent/50'
